@@ -16,12 +16,21 @@ class TournamentsController < ApplicationController
 	end
 
 	def create
-		redirect_to tournament_path(@tournament)
+		@tournament = Tournament.new(valid_params)
+		if @tournament.save
+			redirect_to tournament_path(@tournament)
+		else
+			render 'new'
+		end
 	end
 
 	def update
 		@tournament = Tournament.find(params[:id])
-		redirect_to tournament_path(@tournament)
+		if @tournament.update(valid_params)
+			redirect_to tournament_path(@tournament)
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
@@ -29,4 +38,9 @@ class TournamentsController < ApplicationController
 		@tournament.destroy
 		redirect_to tournaments_path
 	end
+end
+
+private
+def valid_params
+	params.require(:tournament).permit(:location, :start_date, :end_date, :fee, :type, :title, :description, :rules, :sport, :admin_id)
 end

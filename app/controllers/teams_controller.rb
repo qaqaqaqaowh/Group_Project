@@ -16,16 +16,31 @@ class TeamsController < ApplicationController
 	end
 
 	def create
-		redirect_to team_path(@team)
+		@team = Team.new(valid_params)
+		if @team.save
+			redirect_to team_path(@team)
+		else
+			render 'new'
+		end
 	end
 
 	def update
 		@team = Team.find(params[:id])
-		redirect_to team_path(@team)
+		if @team.update(valid_params)
+			redirect_to team_path(@team)
+		else
+			render "edit"
+		end
 	end
 
 	def destroy
 		@team = Team.find(params[:id])
+		@team.destroy
 		redirect_to teams_path
 	end
+end
+
+private
+def valid_params
+	params.require(:team).permit(:name, :description, :admin_id)
 end
