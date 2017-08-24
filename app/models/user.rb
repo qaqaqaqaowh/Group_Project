@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :tournaments
   has_and_belongs_to_many :teams
 
-  def self.name
+  def name
   	"#{self.first_name} #{self.last_name}"
   end
 end
