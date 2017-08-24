@@ -1,10 +1,17 @@
 <%= @team.name %><br>
 By: <%= (User.find(@team.user_id)).name %><br>
 <%= @team.description %><br>
+<h1>Members</h1>
+<% if @team.users.count != 0 %>
+	<% @team.users.each do |member| %>
+	<%= member.name %><br>
+	<% end %>
+<% end %>
 <%= link_to "Teams", teams_path %>
 <%= link_to "My profile", user_path(current_user) %>
 <% if current_user.email == (User.find(@team.user_id)).email %>
 	<%= link_to "Join requests", user_team_approvals_path(@team.id) %>
+	<%= link_to "Sack members", show_members_path(team_id: @team.id) %>
 	<%= link_to "Edit Team", edit_team_path(@team.id) %>
 	<%= link_to "Delete Team", team_path(@team), method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>
