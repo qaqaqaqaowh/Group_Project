@@ -1,0 +1,7 @@
+<%= form_for @user do |u| %>
+	<%= u.label "First Name" %>
+	<%= u.text_field :first_name %>
+	<%= u.label "Last Name" %>
+	<%= u.text_field :last_name %>
+	<%= u.submit "Submit" %>
+<% end %>
