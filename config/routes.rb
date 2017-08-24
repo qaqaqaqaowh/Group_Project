@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   post "/decline_approval/:id" => "user_team_approvals#decline", as: "decline_approval"
   get "/team/:team_id/users" => "teams#showmembers", as: "show_members"
   post "/team/:team_id/delete/user/:user_id" => "teams#deletemember", as:  "delete_member"
+  resources :tournaments
 end
