@@ -17,6 +17,7 @@ class TeamsController < ApplicationController
 
 	def create
 		@team = Team.new(valid_params)
+		@team.user_id = current_user.id
 		if @team.save
 			redirect_to team_path(@team)
 		else
@@ -26,7 +27,7 @@ class TeamsController < ApplicationController
 
 	def update
 		@team = Team.find(params[:id])
-		if @team.update(valid_params)
+		if @team.update(edit_params)
 			redirect_to team_path(@team)
 		else
 			render "edit"
@@ -42,5 +43,9 @@ end
 
 private
 def valid_params
-	params.require(:team).permit(:name, :description, :admin_id)
+	params.require(:team).permit(:name, :description)
+end
+
+def edit_params
+	params.require(:team).permit(:name, :description, :user_id)
 end

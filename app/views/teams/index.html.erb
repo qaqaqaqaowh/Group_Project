@@ -1,0 +1,17 @@
+<% if @teams.count == 0 %>
+	<h1>There are no teams at the moment</h1>
+<% else %>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>By</th>
+		</tr>
+		<% @teams.each do |team| %>
+			<tr>
+				<td><%= link_to team.name, team_path(team) %></td>
+				<td><%= User.find(team.user_id).name %></td>
+			</tr>
+		<% end %>
+	</table>
+	<%= link_to "My profile", user_path(current_user) %>
+<% end %>

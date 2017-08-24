@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "welcome#index"
+  resources :teams
+  resources :user_team_approvals
+  post "/accept_approval/:id" => "user_team_approvals#accept", as: "accept_approval"
+  post "/decline_approval/:id" => "user_team_approvals#decline", as: "decline_approval"
 end
