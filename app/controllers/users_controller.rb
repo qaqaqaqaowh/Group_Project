@@ -44,6 +44,7 @@ class UsersController < Clearance::UsersController
 
   def destroy
     @user = User.find(current_user.id)
+    @user.teams.delete
     @user.destroy
     sign_out
     redirect_to root_path
