@@ -1,4 +1,13 @@
 class Tournament < ApplicationRecord
 	belongs_to :user
-	has_and_belongs_to_many :teams
+	validates :location, presence: true
+	validates :start_date, presence: true
+	validates :end_date, presence: true
+	validates :category, presence: true
+	validates :title, presence: true
+	validates :sport, presence: true
+	validates :num_teams, presence: true
+	validates :num_players, presence: true
+	has_many :tournament_team_approvs
+  	has_many :teams, through: :tournament_team_approvs
 end
