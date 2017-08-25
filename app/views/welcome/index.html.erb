@@ -1,4 +1,4 @@
-  <div class="landing_video">
+    <div class="landing_video">
     <video class="landing_video" muted>
     <source src="group_vid.mp4" type="video/mp4">
     </video>
@@ -62,10 +62,10 @@
       <thead>
         <tr>
           <td class="left-space"></td>
-          <%= image_tag 'search.png', class: 'icon-image' %>
-          <%= image_tag 'icon.png', class: 'icon-image' %>
-          <%= image_tag 'handshake.png', class: 'icon-image' %>
-          <%= image_tag 'cup.png', class: 'icon-image' %>
+          <td><%= image_tag 'search.png', class: 'icon-image' %></td>
+          <td><%= image_tag 'icon.png', class: 'icon-image' %></td>
+          <td><%= image_tag 'handshake.png', class: 'icon-image' %></td>
+          <td><%= image_tag 'cup.png', class: 'icon-image' %></td>
           <td class="right-space"></td>
         </tr>
         <tr>
@@ -81,4 +81,5 @@
         </tr>
       </thead>
     </table>
+    <%= link_to "Sign in with Facebook", "/auth/facebook" %>
   </div>

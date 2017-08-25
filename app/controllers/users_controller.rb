@@ -37,6 +37,7 @@ class UsersController < Clearance::UsersController
     @user = User.find(params[:id])
     if @user.update(edit_params)
       if params[:user][:file]
+        byebug
         @user.avatar = params[:user][:file]
         @user.save!
       end
@@ -51,7 +52,7 @@ class UsersController < Clearance::UsersController
     @user.teams.delete
     @user.destroy
     sign_out
-    redirect_to root_path
+    redirect_to welcome_index_path
   end
 
   def myteam
