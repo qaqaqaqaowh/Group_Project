@@ -12,7 +12,7 @@ class UsersController < Clearance::UsersController
 	end
 
 	def show
-		@user = User.find(current_user.id)
+		@user = User.find(params[:id])
 	end
 
 	def user_from_params
@@ -47,7 +47,7 @@ class UsersController < Clearance::UsersController
   end
 
   def destroy
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
     @user.teams.delete
     @user.destroy
     sign_out

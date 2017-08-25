@@ -52,7 +52,7 @@
               <li><a href="#">My Friends</a></li>
               <li class="divider"></li>
               <li class="dropdown-header"></li>
-              <li><%= link_to "Settings", edit_user_path %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li><%= link_to "Log out", sign_out_path, method: :delete %></li>
             </ul>
           </li> 
