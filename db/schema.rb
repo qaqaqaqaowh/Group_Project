@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170824101121) do
+ActiveRecord::Schema.define(version: 20170825062816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,29 +26,11 @@ ActiveRecord::Schema.define(version: 20170824101121) do
   create_table "teams_tournaments", force: :cascade do |t|
     t.integer "tournament_id"
     t.integer "team_id"
-    t.boolean "approval"
-    t.boolean "payment"
   end
 
   create_table "teams_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "team_id"
-  end
-
-  create_table "tournament_team_approvals", force: :cascade do |t|
-    t.boolean "approval"
-    t.boolean "payment_status"
-    t.bigint "team_id"
-    t.bigint "tournament_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_tournament_team_approvals_on_team_id"
-    t.index ["tournament_id"], name: "index_tournament_team_approvals_on_tournament_id"
-  end
-
-  create_table "tournament_team_approves", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "tournament_team_approvs", force: :cascade do |t|
@@ -97,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170824101121) do
     t.string "remember_token", limit: 128, null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
