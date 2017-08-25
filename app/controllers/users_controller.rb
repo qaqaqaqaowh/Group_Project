@@ -1,5 +1,5 @@
 class UsersController < Clearance::UsersController
-  before_action :require_login, only: [:update, :destroy]
+  before_action :require_login, only: [:edit, :update, :destroy]
 
 	def url_after_create
 		user_path(current_user)

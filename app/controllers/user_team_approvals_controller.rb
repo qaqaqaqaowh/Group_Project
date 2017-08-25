@@ -1,4 +1,6 @@
 class UserTeamApprovalsController < ApplicationController
+	before_action :require_login
+
 	def index
 		@team = Team.find(params[:format])
 		@approvals = @team.user_team_approvals

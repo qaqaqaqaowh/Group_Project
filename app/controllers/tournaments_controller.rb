@@ -1,4 +1,6 @@
 class TournamentsController < ApplicationController
+	before_action :require_login
+
 	def index
 		@tournaments = Tournament.all
 	end
