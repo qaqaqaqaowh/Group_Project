@@ -30,12 +30,16 @@ class UsersController < Clearance::UsersController
   end
 
   def edit
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
     if @user.update(edit_params)
+      if params[:user][:file]
+        @user.avatar = params[:user][:file]
+        @user.save!
+      end
       redirect_to @user
     else
       render "edit"
@@ -48,6 +52,11 @@ class UsersController < Clearance::UsersController
     @user.destroy
     sign_out
     redirect_to root_path
+  end
+
+  def myteam
+    @user = User.find(params[:user_id])
+    @myteams = @user.teams
   end
 end
 

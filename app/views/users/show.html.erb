@@ -1,3 +1,6 @@
+<% unless @user.avatar.file.nil? %>
+	<img src=<%= @user.avatar.url %> style="height: 50px; width: 50px;"><br>
+<% end %>
 <%= @user.email %><br>
 <%= @user.first_name %><br>
 <%= @user.last_name %><br>
@@ -23,6 +26,8 @@
 		<%= link_to team.name, team_path(team) %><br>
 	<% end %>
 <% end %>
+<%= link_to "Edit", edit_user_path(@user) %>
+<%= link_to "Create a team", new_team_path %>
 <%= link_to "List of teams", teams_path %><br>
 <%= link_to "Log out", sign_out_path, method: :delete %><br><br>
 <%= link_to "Delete Account",user_path(@user), method: :delete, data: { confirm: "Are you sure??" } %>

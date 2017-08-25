@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
-  validates :email, uniqueness: true
-  validates :email, :password, :first_name, :last_name, presence: true
+  mount_uploader :avatar, AvatarUploader
+  validates :email, uniqueness: true, on: [:create]
+  validates :email, :password, :first_name, :last_name, presence: true, on: [:create]
   has_many :tournaments
   has_many :user_team_approvals
   has_and_belongs_to_many :teams
