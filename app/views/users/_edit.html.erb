@@ -1,4 +1,5 @@
 <%= form_for @user do |u| %>
+	<%= u.file_field :file %>
 	<%= u.label "First Name" %>
 	<%= u.text_field :first_name %>
 	<%= u.label "Last Name" %>
