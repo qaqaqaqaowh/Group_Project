@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 	def index
 		if signed_in?
-			redirect_to current_user
+			redirect_to tournaments_path
 		end
 	end
 end
