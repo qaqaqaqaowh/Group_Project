@@ -2,21 +2,119 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .vid_container{
-    width: 100%;
-    height: 50%;
-    position: absolute;
-    overflow: hidden;
+  height: 670px;
 }
 
 .landing_video{
   position: absolute;
+  min-width: 100%;
+  height: 650px;
+  object-fit: fill;
+  opacity: 0.7;
   z-index: -1;
-  opacity: 0.6;
-  width: 100%;
 }
 
 .vid_content{
-text-align: center;
-margin-top: 100px;
-color: white;
+  opacity: 1;
+  text-align: center;
+  height: 650px;
+  width: 150em;
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.first_line{
+  width: 200px;
+  border: 1.5px solid white;
+}
+
+.line{
+  border: 1px solid black;
+  margin-left: px;
+}
+
+.line-right{
+  width: 500px;
+  height: 1px;
+  background: grey;
+  margin: 15px;
+  margin-left: 80%;
+}
+
+.section{
+  margin-top: 50px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.section-content-right{
+  padding-top: 80px;
+  text-align: right;
+  padding-left: 250px;
+  margin: 0;
+}
+
+.button{
+
+}
+
+.section-image-right{
+  padding-right: 350px;
+  padding-left: 100px;
+  height: 350px;
+  float: right;
+}
+
+.section-content-left{
+  padding-top: 60px;
+  padding-right: 250px;
+  margin: 0;
+}
+
+.section-image-left{
+  padding-left: 350px;
+  padding-right: 100px;
+  height: 290px;
+  float: left;
+}
+
+.section-content-middle{
+  padding-top: 20px;
+  text-align: center;
+}
+
+.icon-section{
+  height: 400px;
+}
+
+.tournament-icons{
+  width: 100%;
+}
+
+.landing-icon{
+  padding-top: 35px;
+  text-align: center;
+}
+
+.landing-caption{
+  padding-top: 10px;
+  font-style: italic;
+  text-align: center;
+}
+
+.icon-image{
+  width: 120px;
+}
+
+.left-space{
+  padding-left: 100px;
+}
+.right-space{
+  padding-right: 100px;
+}
+
+h1{
+  font-size: 50px;
+  font-weight: 500px;
 }
