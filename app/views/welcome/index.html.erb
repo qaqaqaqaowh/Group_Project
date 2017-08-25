@@ -24,7 +24,7 @@
             <%=link_to 'Join a Tournament', nil, class: "btn btn-warning"%>
           </div>
           <div class="col-md-4">
-            <img class="section-image-right" src="compete_players.jpg">
+            <%= image_tag 'compete_players.jpg', class: 'section-image-right' %>
           </div>
 
       </div>
@@ -35,7 +35,7 @@
     <div class="row">
 
       <div class="col-md-4">
-        <img class="section-image-left" src="connect_playjpg">
+        <%= image_tag 'connect_players.jpg', class: 'section-image-left' %>  
       </div>
       <div class="col-md-8">
         <h1 class="section-content-left">
@@ -56,10 +56,10 @@
       <thead>
         <tr>
           <td class="left-space"></td>
-          <td class="landing-icon"><img class="icon-image" src="search.png"></td>
-          <td class="landing-icon"><img class="icon-image" src="icon.png"></td>
-          <td class="landing-icon"><img class="icon-image" src="handshake.png"></td>
-          <td class="landing-icon"><img class="icon-image" src="cup.png"></td>
+          <%= image_tag 'search.png', class: 'icon-image' %> 
+          <%= image_tag 'icon.png', class: 'icon-image' %> 
+          <%= image_tag 'handshake.png', class: 'icon-image' %> 
+          <%= image_tag 'cup.png', class: 'icon-image' %> 
           <td class="right-space"></td>
         </tr>
         <tr>
