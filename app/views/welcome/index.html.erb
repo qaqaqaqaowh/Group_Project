@@ -1,13 +1,20 @@
-<div class="vid_container">
   <div class="landing_video">
-    <video class="landing_video" autoplay loop>
+    <video class="landing_video" muted>
     <source src="group_vid.mp4" type="video/mp4">
-    </video></div>
-  <div class="vid_content">
-    <h1 class="shadow">JOIN.ORGANIZE.EARN</h1>
-    <hr class="first_line">
-    <h3 class="shadow">Compete, Organize and Earn from tournaments.</h3></div>
-</div>
+    </video>
+  </div>
+
+  <table class="vid_content">
+    <tr>
+      <td class="table-logo"><image class="logo" src="logo.png"></td>
+
+      <td><h1 class="title">JOIN.ORGANIZE.EARN</h1><hr class="first-line">
+        <h3 class="title-caption">Compete, Organize and Earn from Tournaments.</h3>
+        <%=link_to 'Join Us', nil, class: "btn btn-warning title-button"%></td>
+
+      <td class="log-in-btn"><%=link_to 'Log In', nil, class: "btn btn-warning log-in"%></td>
+    </tr>
+  </table>
 
 <div class="landing_container">
 
@@ -15,16 +22,16 @@
       <div class="row">
 
           <div class="col-md-8">
-            <h1 class="section-content-right">
+            <h1 class="section-title-left">
             Compete
-            <hr style="border: 1px solid orange; width:200px"></h1>
-            <h4 class="section-content-right">
+            <hr style="border: 1px solid orange; margin-top:10px"></h1>
+            <h4 style="color:white; width:600px">
               Compete in any of the upcoming tournaments to get your share of adrenaline and experience. Meet players just like you! Improve on the foundation that's sole purpose is unity, the act of Sport.
             </h4>
             <%=link_to 'Join a Tournament', nil, class: "btn btn-warning"%>
           </div>
           <div class="col-md-4">
-            <img class="section-image-right" src="compete_players.jpg">
+            <img class="section-image-right" src="basketball.jpg">
           </div>
 
       </div>
@@ -35,20 +42,19 @@
     <div class="row">
 
       <div class="col-md-4">
-        <img class="section-image-left" src="connect_playjpg">
+        <img class="section-image-left" src="football.png">
       </div>
       <div class="col-md-8">
-        <h1 class="section-content-left">
+        <h1 class="section-title-left">
           Connect
-          <hr style="border: 1px solid orange; width:200px"></h1>
-        <h4 class="section-content-left">
+          <hr style="border: 1px solid orange; margin-top:10px"></h1>
+        <h4 style="color:white; width:600px">
             Connect with like-minded players from all across Malaysia. Branch out to find stepping stones in your journey of mastering the sport of your choice.
         </h4>
         <%=link_to 'Make a Team', nil, class: "btn btn-warning"%></div>
       </div>
     </div>
-      <div class="bottom-space"></div>
-
+  </div>
 
   <div class="icon-section">
     <h1 class="section-content-middle">Host a Tournament<hr style="border:1px solid orange; width:590px"></h1>
@@ -76,5 +82,3 @@
       </thead>
     </table>
   </div>
-
-</div>

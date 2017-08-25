@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   include Clearance::Controller
   protect_from_forgery with: :exception
-  	before_action :require_login
 
 
 	private
@@ -12,5 +11,5 @@ class ApplicationController < ActionController::Base
 	      redirect_to sign_in_path # halts request cycle
 	    end
 	end
-  
+
 end
