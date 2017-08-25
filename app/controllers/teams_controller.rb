@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+	before_action :require_login, only: [:edit, :create, :update, :destroy]
+
 	def index
 		@teams = Team.all	
 	end
