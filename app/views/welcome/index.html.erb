@@ -1,14 +1,14 @@
   <div class="landing_video">
-    <video class="landing_video" muted>
+    <video class="landing_video" autoplay loop muted>
     <source src="group_vid.mp4" type="video/mp4">
     </video>
   </div>
 
   <table class="vid_content">
     <tr>
-      <td class="table-logo"><image class="logo" src="logo.png"></td>
+      <td class="table-space"></td>
 
-      <td><h1 class="title">JOIN.ORGANIZE.EARN</h1><hr class="first-line">
+      <td><image class="logo" src="logo.png"><h1 class="title">JOIN.ORGANIZE.EARN</h1><hr class="first-line">
         <h3 class="title-caption">Compete, Organize and Earn from Tournaments.</h3>
         <%=link_to 'Join Us', nil, class: "btn btn-warning title-button"%></td>
 
@@ -16,69 +16,123 @@
     </tr>
   </table>
 
-<div class="landing_container">
+<div class="container landing_container">
+  <div class="row">
+    <div class="col-md-12">
 
-  <div class="container">
+  <div class="container section">
       <div class="row">
 
-          <div class="col-md-8">
-            <h1 class="section-title-left">
-            Compete
-            <hr style="border: 1px solid orange; margin-top:10px"></h1>
-            <h4 style="color:white; width:600px">
+          <div class="col-md-7">
+            <h1 class="section-title">
+            Compete</h1>
+            <div class="line"></div>
+            <h4 style="color:white; width:600px; margin-bottom:20px">
               Compete in any of the upcoming tournaments to get your share of adrenaline and experience. Meet players just like you! Improve on the foundation that's sole purpose is unity, the act of Sport.
             </h4>
-            <%=link_to 'Join a Tournament', nil, class: "btn btn-warning"%>
+            <%=link_to 'JOIN A TOURNAMENT', nil, class: "btn btn-warning section-button"%>
           </div>
-          <div class="col-md-4">
-            <img class="section-image-right" src="basketball.jpg">
+
+          <div class="col-md-5">
+            <img class="section-image-right reflection" src="basketball.jpg">
           </div>
 
       </div>
     </div>
 
-
-  <div class="container">
+  <div class="container section">
     <div class="row">
 
-      <div class="col-md-4">
-        <img class="section-image-left" src="football.png">
+      <div class="col-md-5">
+        <img class="section-image-left reflection" src="football.png">
       </div>
-      <div class="col-md-8">
-        <h1 class="section-title-left">
-          Connect
-          <hr style="border: 1px solid orange; margin-top:10px"></h1>
-        <h4 style="color:white; width:600px">
+      <div class="col-md-7">
+        <h1 class="section-title">
+          Connect</h1>
+          <div class="line"></div>
+        <h4 style="color:white; width:600px; margin-bottom:20px">
             Connect with like-minded players from all across Malaysia. Branch out to find stepping stones in your journey of mastering the sport of your choice.
         </h4>
-        <%=link_to 'Make a Team', nil, class: "btn btn-warning"%></div>
+        <%=link_to 'MAKE A TEAM', nil, class: "btn btn-warning section-button"%>
       </div>
+
+      </div>
+    </div>
+
+    <div class="container section">
+      <div class="row">
+
+        <div class="col-md-12">
+          <h1 class="section-title-middle">Host a Tournament<hr style="border:1px solid orange; width:590px"></h1>
+        </div>
+      </div>
+
+      <div class="row" style="padding-top:30px">
+        <div class="col-md-3">
+            <%= image_tag 'search.png', class: 'icon-image center-block reflection' %>
+            <h4 class="landing-caption">Search</h4>
+        </div>
+        <div class="col-md-3">
+            <%= image_tag 'team.png', class: 'icon-image center-block reflection' %>
+            <h4 class="landing-caption">Team</h4>
+        </div>
+        <div class="col-md-3">
+            <%= image_tag 'handshake.png', class: 'icon-image center-block reflection' %>
+            <h4 class="landing-caption">Meet</h4>
+        </div>
+        <div class="col-md-3">
+            <%= image_tag 'cup.png', class: 'icon-image center-block reflection' %>
+            <h4 class="landing-caption">Win</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <%=link_to 'Host a Tournament', nil, class: "btn btn-warning center-block icon-button"%>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <div class="icon-section">
-    <h1 class="section-content-middle">Host a Tournament<hr style="border:1px solid orange; width:590px"></h1>
-    <table class="tournament-icons">
-      <thead>
-        <tr>
-          <td class="left-space"></td>
-          <%= image_tag 'search.png', class: 'icon-image' %>
-          <%= image_tag 'icon.png', class: 'icon-image' %>
-          <%= image_tag 'handshake.png', class: 'icon-image' %>
-          <%= image_tag 'cup.png', class: 'icon-image' %>
-          <td class="right-space"></td>
-        </tr>
-        <tr>
-          <td class="left-space"></td>
-          <td class="landing-caption">Search</td>
-          <td class="landing-caption">Team</td>
-          <td class="landing-caption">Meet</td>
-          <td class="landing-caption">Win</td>
-          <td class="right-space"></td>
-        </tr>
-        <tr>
-          <td colspan="6" style="text-align:center"><%=link_to 'Host a Tournament', nil, class: "btn btn-warning"%></td>
-        </tr>
-      </thead>
-    </table>
+</div>
+</div>
+</div>
+
+<div class="container footer">
+  <div class="row">
+
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <image src="logo.png" style="border-radius:10%"><br><br>
+        <p style="color:white">
+        SportsJoe is a product made whole by a small team of coders residing in a longitude/latitude cross which points to a place called NEXT Academy. Enjoy our late nights!
+        </p>
+        <p style="color:gray">SportsJoe © 2017</p>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+      <p style="font-size:15px; color:white">
+        Help <br>
+        Jobs <br>
+        FAQ <br>
+        Terms of Service <br>
+        Privacy Policy <br> <br>
+        <strong>Tel :</strong> +60 3-9212 8158 <br>
+        <strong>Mail :</strong> sportsjoe@mail.com
+      </p>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+      <p style="font-size:15px; color:white">AG-7, Glomac Damansara, Jalan Damansara, Tmn Tun Dr Ismail, 60000, Malaysia <br>
+      <strong>NEXT Academy</strong><br><br>
+      Our Social Media :</p>
+      <a href=""><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+      <a href=""><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+      <a href=""><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+      <a href=""><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+    </div>
+    <div class="col-md-1"></div>
+
   </div>
+</div>
