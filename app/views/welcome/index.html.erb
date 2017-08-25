@@ -1,3 +1,68 @@
 <%= link_to "Sign in", sign_in_path %>
 <%= link_to "Sign up", sign_up_path %>
 <%= link_to "Sign out", sign_out_path, method: :delete %>
+
+<div class="vid_container">
+  <div class="landing_video">
+    <video class="landing_video">
+    <source src="group_vid.mp4" type="video/mp4">
+    </video></div>
+  <div class="vid_content">
+    <h1>JOIN.ORGANIZE.EARN</h1>
+    <hr class="first_line">
+    <h4>Compete, Organize and Earn from tournaments.</h4></div>
+</div>
+
+<div class="section">
+    <img class="section-image-right" src="compete_players.jpg">
+    <h1 class="section-content-right">
+      Compete
+      <hr style="border: 1px solid black">
+    </h1>
+
+    <h4 class="section-content-right" style="padding:0">
+      Compete in any of the upcoming tournaments to get your <br>share of adrenaline and experience. Meet players just like you! <br>Improve on the foundation that's sole purpose is unity, the act of Sport.
+    </h4>
+
+    <div class="section-content-right" style="padding-top:10px">
+    <%=link_to 'Join a Tournament', nil, class: "button"%></div>
+</div>
+
+
+<div class="section">
+  <img class="section-image-left" src="connect_players.jpg">
+  <h1 class="section-content-left">
+    Connect
+    <hr class="line">
+  </h1>
+  <h4 class="section-content-left" style="padding:0">
+      Connect with like-minded players from all across Malaysia. <br>Branch out to find stepping stones in your journey of mastering <br>the sport of your choice.
+  </h4>
+  <div class="section-content-left" style="padding-top:10px">
+  <%=link_to 'Make a Team'%></div>
+</div>
+
+<div class="icon-section">
+  <h1 class="section-content-middle">Host a Tournament<hr style="border:1px solid black; width:590px"></h1>
+  <table class="tournament-icons">
+    <thead>
+      <tr>
+        <td class="left-space"></td>
+        <td class="landing-icon"><img class="icon-image" src="search.png"></td>
+        <td class="landing-icon"><img class="icon-image" src="icon.png"></td>
+        <td class="landing-icon"><img class="icon-image" src="handshake.png"></td>
+        <td class="landing-icon"><img class="icon-image" src="cup.png"></td>
+        <td class="right-space"></td>
+      </tr>
+      <tr>
+        <td class="left-space"></td>
+        <td class="landing-caption">Search</td>
+        <td class="landing-caption">Team</td>
+        <td class="landing-caption">Meet</td>
+        <td class="landing-caption">Win</td>
+        <td class="right-space"></td>
+      </tr>
+    </thead>
+  </table>
+
+</div>
