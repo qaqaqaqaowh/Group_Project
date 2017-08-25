@@ -46,15 +46,16 @@
           <% end %>
            <%= current_user.name || "" %> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
+
               <li><a href="#">My Profile</a></li>
               <li><a href="/user/:user_id/teams">My Team</a></li>
               <li><a href="#">My Friends</a></li>
               <li class="divider"></li>
               <li class="dropdown-header"></li>
-              <li><a href="#">Settings</a></li>
-              <li><a href="#">Logout</a></li>
+              <li><%= link_to "Settings", edit_user_path %></li>
+              <li><%= link_to "Log out", sign_out_path, method: :delete %></li>
             </ul>
-          </li>
+          </li> 
         </ul>
       </div>
       <!--/.nav-collapse -->
