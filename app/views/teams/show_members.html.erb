@@ -1,0 +1,5 @@
+<h1>Sack Members</h1>
+<% @members.each do |member| %>
+	<%= link_to member.name, delete_member_path(user_id: member.id), method: :post, data: {confirm: "Do you want to sack #{member.name}???"} %>
+<% end %>
+<%= link_to "Team", team_path(@team) %>

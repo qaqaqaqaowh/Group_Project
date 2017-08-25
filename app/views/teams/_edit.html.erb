@@ -1,0 +1,9 @@
+<%= form_for @team do |t| %>
+	<%= t.label "Team Name" %><br>
+	<%= t.text_field :name %><br>
+	<%= t.label "Description" %><br>
+	<%= t.text_field :description %><br>
+	Team Leader ID (Current Leader: <%= User.find(@team.user_id).name %>)<br>
+	<%= t.text_field :user_id %><br>
+	<%= t.submit "Change" %>
+<% end %>

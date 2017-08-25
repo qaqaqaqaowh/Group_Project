@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824034556) do
+
+ActiveRecord::Schema.define(version: 20170824101121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
-    t.integer "admin_id"
+    t.integer "user_id"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,6 +27,8 @@ ActiveRecord::Schema.define(version: 20170824034556) do
   create_table "teams_tournaments", force: :cascade do |t|
     t.integer "tournament_id"
     t.integer "team_id"
+    t.boolean "approval"
+    t.boolean "payment"
   end
 
   create_table "teams_users", force: :cascade do |t|
@@ -33,18 +36,54 @@ ActiveRecord::Schema.define(version: 20170824034556) do
     t.integer "team_id"
   end
 
+  create_table "tournament_team_approvals", force: :cascade do |t|
+    t.boolean "approval"
+    t.boolean "payment_status"
+    t.bigint "team_id"
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_tournament_team_approvals_on_team_id"
+    t.index ["tournament_id"], name: "index_tournament_team_approvals_on_tournament_id"
+  end
+
+  create_table "tournament_team_approves", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tournament_team_approvs", force: :cascade do |t|
+    t.boolean "approval"
+    t.boolean "payment_status"
+    t.bigint "team_id"
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_tournament_team_approvs_on_team_id"
+    t.index ["tournament_id"], name: "index_tournament_team_approvs_on_tournament_id"
+  end
+
   create_table "tournaments", force: :cascade do |t|
     t.string "location"
     t.date "start_date"
     t.date "end_date"
-    t.string "type"
+    t.string "category"
     t.integer "winning_team_id"
     t.string "title"
     t.string "description"
     t.string "rules"
     t.integer "fee"
     t.string "sport"
-    t.integer "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "num_teams"
+    t.integer "num_players"
+  end
+
+  create_table "user_team_approvals", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
