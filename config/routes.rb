@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root "welcome#index"
+  root "welcome#index", as: "welcome_index"
   resources :teams
   resources :user_team_approvals
   post "/accept_approval/:id" => "user_team_approvals#accept", as: "accept_approval"

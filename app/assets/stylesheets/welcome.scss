@@ -1,51 +1,84 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.vid_container{
-  height: 670px;
-}
-
-.landing_container{
-  padding-left: 200px;
-  padding-right: 200px;
-  padding-top: 50px;
-  background: rgb(33, 39, 53);
-}
-.bottom-space{
-padding-bottom: 100px;
-}
 .landing_video{
   position: absolute;
-  min-width: 100%;
-  height: 670px;
+  width: 100%;
+  height: 700px;
   object-fit: fill;
   opacity: 0.85;
   z-index: -1;
 }
 
 .vid_content{
-  opacity: 1;
-  text-align: center;
-  height: 670px;
-  width: 150em;
-  color: white;
-  display: table-cell;
-  vertical-align: middle;
+  width: 100%;
+  height: 700px;
 }
 
-.first_line{
-  width: 200px;
-  border: 1.5px solid white;
+.table-logo{
+  vertical-align: top;
+  width: 100px !important;
+  padding-top: 15px;
+  padding-left: 21px;
+}
+.logo{
+  width: 100px;
+  border-radius: 8%
 }
 
-.section-content-right{
-  color: white;
+.log-in-btn{
+  vertical-align: top;
+  padding-top: 15px;
+  padding-right: 21px;
   text-align: right;
+  width: 100px !important;
 }
 
-.section-content-left{
+.log-in{
+  background: none;
+  border-width: medium;
+  width: 100px;
+  font-family: Hind Madurai;
+  font-size: 15px;
+}
+
+.title{
+  text-align: center;
   color: white;
-  text-align: left;
+  font-family: Modi Thorson;
+  text-shadow: 2px 3px black;
+}
+.title-caption{
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-family: Hind Madurai;
+  padding-bottom: 10px;
+}
+.title-button{
+  margin: auto;
+  display: block;
+  width: 150px;
+  padding: 10px;
+  font-family: Hind Madurai;
+  font-size: 20px;
+}
+
+.landing_container{
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 50px;
+  background: black;
+  padding-bottom: 20px;
+}
+
+.first-line{
+  width: 400px;
+  border: 1.5px solid orange;
+}
+
+.section-title-left{
+  color: white;
 }
 
 .section-image-right{
@@ -58,11 +91,13 @@ padding-bottom: 100px;
 
 .section-content-middle{
   color: white;
-  padding-top: 20px;
+  margin: 0;
+  padding-top: 25px;
   text-align: center;
 }
 
 .icon-section{
+  background: #808080;
   height: 400px;
 }
 
@@ -103,10 +138,6 @@ h1{
   font-size: 50px;
   font-weight: 500px;
   transform: scale(1, 1.2);
-}
-
-.shadow{
-  text-shadow: 2px 2px black;
 }
 
 @media screen and (min-width: 480px) {
