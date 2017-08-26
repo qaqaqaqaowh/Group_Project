@@ -1,0 +1,38 @@
+<div class="container">
+
+  <h1>Next Tournaments</h1>
+  <hr style="color: grey">
+	<div class="row">
+	 <!-- loop each tournament at this column -->
+	 	<% @tournaments.each do |tournament| %>
+		<div class="col-md-4 portfolio-item">
+			<div class="well" id="tournament-index">		
+				<%= image_tag("football_action.jpg", class: "img-responsive") %>
+				<h3><%= tournament.title %></h3>
+				<hr>
+				<div class="row">
+					<div class="col-sm-3"><h5><strong>Sport:</strong></h5></div>
+					<div class="col-sm-5"><h6><%= tournament.sport %></h6></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3"><h5><strong>Category:</strong></h5></div>
+					<div class="col-sm-5"><h6><%= tournament.category %></h6></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3"><h5><strong>Location:</strong></h5></div>
+					<div class="col-sm-5"><h6><%= tournament.location %></h6></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3"><h5><strong>Date:</strong></h5></div>
+					<div class="col-sm-9"><h6><%= tournament.start_date.strftime('%d %B %Y') %> - <%= tournament.end_date.strftime('%d %B %Y') %></h6></div>
+				</div>
+				<div class="row">						
+					<div class="col-sm-3"><h5><strong>Fee:</strong></h5></div>
+					<div class="col-sm-5"><h6><%= tournament.fee %></h6></div>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+
+</div>
