@@ -13,7 +13,7 @@ class TournamentsController < ApplicationController
 		# byebug
 		@tournament = Tournament.new(valid_params)
 		if @tournament.save
-			redirect_to tournament_path(@tournament)
+			redirect_to tournaments_path
 		else
 			render 'new'
 		end
