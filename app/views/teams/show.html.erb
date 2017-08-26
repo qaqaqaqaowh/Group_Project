@@ -1,3 +1,6 @@
+<% unless @team.avatar.file.nil? %>
+	<img src=<%= @team.avatar.url %> >
+<% end %>
 <%= @team.name %><br>
 By: <%= (User.find(@team.user_id)).name %><br>
 <%= @team.description %><br>

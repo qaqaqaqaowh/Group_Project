@@ -21,6 +21,10 @@ class TeamsController < ApplicationController
 		@team = Team.new(team_params)
 		@team.user_id = current_user.id
 		if @team.save
+			if params[:team][:file]
+				@team.avatar = params[:team][:file]
+				@team.save!
+			end
 			redirect_to team_path(@team)
 		else
 			render 'new'
@@ -30,6 +34,10 @@ class TeamsController < ApplicationController
 	def update
 		@team = Team.find(params[:id])
 		if @team.update(edit_params)
+			if params[:team][:file]
+				@team.avatar = params[:team][:file]
+				@team.save!
+			end
 			redirect_to team_path(@team)
 		else
 			render "edit"
