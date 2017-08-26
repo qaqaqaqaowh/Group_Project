@@ -11,7 +11,11 @@
       <td><image class="logo" src="logo.png"><h1 class="title">JOIN.ORGANIZE.EARN</h1>
         <div class="line middle"></div>
         <h3 class="title-caption">Compete, Organize and Earn from Tournaments.</h3>
-        <%=link_to 'Join Us', nil, class: "btn btn-warning title-button middle"%></td>
+        <% if current_user%>
+        <%=link_to 'Join Us', user_path(current_user), class: "btn btn-warning title-button middle"%>
+        <%else%>
+        <%=link_to 'Join Us', sign_up_path, class: "btn btn-warning title-button middle"%>
+        <%end%>
 
       <td class="log-in-btn">
         <% if current_user%>
@@ -37,7 +41,7 @@
             <h4 style="color:white; width:600px; margin-bottom:20px">
               Compete in any of the upcoming tournaments to get your share of adrenaline and experience. Meet players just like you! Improve on the foundation that's sole purpose is unity, the act of Sport.
             </h4>
-            <%=link_to 'JOIN A TOURNAMENT', nil, class: "btn btn-warning section-button"%>
+            <%=link_to 'JOIN A TOURNAMENT', tournaments_path, class: "btn btn-warning section-button"%>
           </div>
 
           <div class="col-md-5">
@@ -60,7 +64,7 @@
         <h4 style="color:white; width:600px; margin-bottom:20px">
             Connect with like-minded players from all across Malaysia. Branch out to find stepping stones in your journey of mastering the sport of your choice.
         </h4>
-        <%=link_to 'MAKE A TEAM', nil, class: "btn btn-warning section-button"%>
+        <%=link_to 'MAKE A TEAM', new_team_path, class: "btn btn-warning section-button"%>
       </div>
 
       </div>
@@ -97,10 +101,9 @@
 
       <div class="row">
         <div class="col-md-12">
-            <%=link_to 'Host a Tournament', nil, class: "btn btn-warning center-block icon-button"%>
+            <%=link_to 'Host a Tournament', new_tournament_path, class: "btn btn-warning center-block icon-button"%>
         </div>
       </div>
-<%= link_to "Sign in with Facebook", "/auth/facebook" %>
     </div>
   </div>
 </div>
