@@ -6,8 +6,8 @@
       </div>
       <div id="navbar6" class="navbar-collapse collapse">
       	<ul class="nav navbar-nav">
-      	  <li><a href="#">Home</a></li>
-          <li><a href="#">Host Tournament</a></li>
+      	  <li><%= link_to "Home", tournaments_path %></li>
+          <li><%= link_to "Host Tournament", new_tournament_path %></li>
           <li><a href="#">Join Tournament</a></li>
           <li><a href="#">News</a></li>
           <li><a href="#">Contact Us</a></li>
@@ -47,8 +47,8 @@
            <%= current_user.name || "" %> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
 
-              <li><a href="#">My Profile</a></li>
-              <li><a href="/user/:user_id/teams">My Team</a></li>
+              <li><%= link_to "My Profile", user_path(current_user) %></li>
+              <li><%= link_to "My Team", my_team_path(current_user) %></li>
               <li><a href="#">My Friends</a></li>
               <li class="divider"></li>
               <li class="dropdown-header"></li>
