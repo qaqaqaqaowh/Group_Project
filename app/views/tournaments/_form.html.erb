@@ -13,52 +13,60 @@
 		</ul>
 		</div>
 	<% end %>
-<p>
-	<%= f.label :title %><br>
-	<%= f.text_field :title %>
-</p>
-<p>
-	<%= f.label :sport %><br>
-	<%= f.text_field :sport %>
-</p>
-<p>
-	<%= f.label :category %><br>
-	<%= f.text_field :category %>
-</p>
-<p>
-	<%= f.label :location%><br>
-	<%= f.text_area :location%>
-</p>
-<p>
-	<%= f.label :description%><br>
-	<%= f.text_area :description%>
-</p>
-<p>
-	<%=f.label :start_date%><br>
-	<%= f.date_field :start_date %>
-</p>
-<p>
-	<%=f.label :end_date%><br>
-	<%= f.date_field :end_date %>
-</p>
-<p>
-	<%= f.label :num_teams, "Number of Teams" %><br>
-	<%= f.text_field :num_teams %>
-</p>
-<p>
-	<%= f.label :num_players, "Number of Players" %><br>
-	<%= f.text_field :num_players %>
-</p>
-<p>
-	<%= f.label :rules%><br>
-	<%= f.text_area :rules%>
-</p>
-<p>
-	<%= f.label :fee %><br>
-	<%= f.text_field :fee %>
-</p>
+
+	<div class="form-group" id="new-tour-form">
+    <h3><%= f.label "Your Tournament Name", :class => 'control-label' %></h3>
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+
+	<div class="form-group" id="new-tour-form">
+	<div class="row">
+	<div class="col-sm-2"><p><%= f.label :sport, class: 'control-label' %></p></div>
+	<div class="col-sm-4"><%= f.text_field :sport, class: 'form-control' %></div>
+	<div class="col-sm-2"><p><%= f.label :category, class: 'control-label' %></p></div>
+	<div class="col-sm-4"><%= f.text_field :category, class: 'form-control' %></div>
+    </div>
+    </div>
+
+	<div class="form-group" id="new-tour-form">
+	<div class="row">
+	<div class="col-sm-2"><p><%= f.label :location, class: 'control-label' %></p></div>
+	<div class="col-sm-4"><%= f.text_field :location, class: 'form-control' %></div>
+	<div class="col-sm-2"><p><%= f.label :entry_fee, class: 'control-label' %></p></div>
+	<div class="col-sm-2"><%= f.text_field :fee, class: 'form-control' %></div>
+    </div>
+    </div>
+
+    <div class="form-group" id="new-tour-form">
+    <div class="row">
+    <div class="col-sm-2"><p><%= f.label :no_of_teams, class: 'control-label' %></p></div>
+    <div class="col-sm-2"><%= f.text_field :num_teams, class: 'form-control' %></div>
+    <div class="col-sm-3 col-sm-offset-1"><p><%= f.label :players_per_team, class: 'control-label' %></p></div>
+    <div class="col-sm-2"><%= f.text_field :num_players, class: 'form-control' %></div>
+    </div>
+    </div>
+ 
+    <div class="form-group" id="new-tour-form">
+    <div class="row">
+    <div class="col-sm-2"><p><%= f.label :start_date %></p></div>
+    <div class="col-sm-4"><%= f.date_field :start_date, class: 'form-control' %></div>
+    <div class="col-sm-2"><p><%= f.label :end_date %></p></div>
+    <div class="col-sm-4"><%= f.date_field :end_date, class: 'form-control' %></div>
+    </div>
+    </div>
+
+	<div class="form-group" id="new-tour-form">
+    <p><%= f.label :description, :class => 'control-label' %></p>
+      <%= f.text_area :description, :class => 'form-control', :rows =>'4' %>
+    </div>
+
+	<div class="form-group" id="new-tour-form">
+    <p><%= f.label :rules, :class => 'control-label' %></p>
+      <%= f.text_area :rules, :class => 'form-control', :rows =>'4' %>
+    </div>
+
 	<%=f.hidden_field :user_id, value: current_user.id%> 
-<p>
-	<%= f.submit %>
-</p>
+    <div class="form-group" id="new-tour-form">
+    <%= f.submit :class => 'btn btn-danger form-control' %>
+    </div>
 <% end %>
