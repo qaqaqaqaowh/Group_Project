@@ -7,7 +7,7 @@
 	 	<% @tournaments.each do |tournament| %>
 		<div class="col-md-4 portfolio-item">
 			<div class="well" id="tournament-index">		
-				<%= image_tag("football_action.jpg", class: "img-responsive") %>
+				<%= link_to image_tag("football_action.jpg", class: "img-responsive"), tournament_path(tournament) %>
 				<h3><%= tournament.title %></h3>
 				<hr>
 				<div class="row">

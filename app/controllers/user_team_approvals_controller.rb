@@ -23,6 +23,7 @@ class UserTeamApprovalsController < ApplicationController
 
 	def decline
 		@approval = UserTeamApproval.find(params[:id])
+		@team = Team.find(@approval.team_id)
 		@approval.destroy
 		redirect_to user_team_approvals_path(@team.id)
 	end
