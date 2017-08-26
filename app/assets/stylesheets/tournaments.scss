@@ -31,5 +31,8 @@
 
 hr{
   border-top: 1px solid orange;
-  width: 95%;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	background-color: #212735;
 }
