@@ -47,6 +47,7 @@
   color: white;
   font-family: Modi Thorson;
   text-shadow: 2px 3px black;
+  transform: scale(1, 1.2);
 }
 .title-caption{
   text-align: center;
@@ -156,11 +157,9 @@ h4 {
   font-family: Julius Sans One;
 }
 
-h1 {
-  font-family: Modi Thorson;
+h1{
   font-size: 50px;
   font-weight: 500px;
-  transform: scale(1, 1.2);
 }
 
 .footer{
