@@ -1,7 +1,7 @@
 <%= form_for @team do |t| %>
-	<%= t.label "Team name: " %>
-	<%= t.text_field :name %><br>
-	<%= t.label "Team Description: " %>
-	<%= t.text_field :description %><br>
-	<%= t.submit "Create!!!" %>
+	<h3>Team Name :</h3>
+	<%= t.text_field :name, class: "text-field" %>
+	<h3>Team Description :</h3>
+	<%= t.text_area :description, class: "text-field", style: "height:130px;" %><br><br>
+	<%= t.submit "Create Team", class: "btn btn-warning edit-button" %>
 <% end %>

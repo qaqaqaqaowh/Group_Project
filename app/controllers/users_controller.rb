@@ -35,9 +35,8 @@ class UsersController < Clearance::UsersController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(edit_params)
+    if @user.update(edit_params_user)
       if params[:user][:file]
-        byebug
         @user.avatar = params[:user][:file]
         @user.save!
       end
@@ -62,6 +61,6 @@ class UsersController < Clearance::UsersController
 end
 
 private
-def edit_params
+def edit_params_user
   params.require(:user).permit(:first_name, :last_name)
 end

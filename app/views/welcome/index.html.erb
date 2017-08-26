@@ -8,11 +8,18 @@
     <tr>
       <td class="table-space"></td>
 
-      <td><image class="logo" src="logo.png"><h1 class="title">JOIN.ORGANIZE.EARN</h1><hr class="first-line">
+      <td><image class="logo" src="logo.png"><h1 class="title">JOIN.ORGANIZE.EARN</h1>
+        <div class="line middle"></div>
         <h3 class="title-caption">Compete, Organize and Earn from Tournaments.</h3>
-        <%=link_to 'Join Us', nil, class: "btn btn-warning title-button"%></td>
+        <%=link_to 'Join Us', nil, class: "btn btn-warning title-button middle"%></td>
 
-      <td class="log-in-btn"><%=link_to 'Log In', nil, class: "btn btn-warning log-in"%></td>
+      <td class="log-in-btn">
+        <% if current_user%>
+        <%=link_to 'Log In', user_path(current_user), class: "btn btn-warning log-in"%>
+        <%else%>
+        <%=link_to 'Log In', sign_up_path, class: "btn btn-warning log-in"%>
+        <%end%>
+      </td>
     </tr>
   </table>
 
@@ -63,7 +70,9 @@
       <div class="row">
 
         <div class="col-md-12">
-          <h1 class="section-title-middle">Host a Tournament<hr style="border:1px solid orange; width:590px"></h1>
+          <h1 class="section-title-middle">Host a Tournament</h1>
+          <div class="line middle" style="width:500px;">
+          </div>
         </div>
       </div>
 
