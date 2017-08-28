@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   resources :user_team_approvals
   post "/accept_approval/:id" => "user_team_approvals#accept", as: "accept_approval"
   post "/decline_approval/:id" => "user_team_approvals#decline", as: "decline_approval"
-  get "/team/:team_id/users" => "teams#showmembers", as: "show_members"
   post "/team/:team_id/delete/user/:user_id" => "teams#deletemember", as:  "delete_member"
   get "/user/:user_id/teams" => "users#myteam", as: "my_team"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
