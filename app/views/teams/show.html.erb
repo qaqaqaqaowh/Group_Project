@@ -29,16 +29,17 @@
 						<% end %>
 					</table>
 				<%else%>
-					<h4 class="well-content">There are no members in your team yet.</h4>
+					<h4 class="well-content">There are no members in this team yet.</h4>
 				<% end %>
 				<% if current_user.email == (User.find(@team.user_id)).email %>
-					<%= link_to "Edit Team", edit_team_path(@team.id) %><br>
-					<%= link_to "Delete Team", team_path(@team), method: :delete, data: { confirm: "Are you sure?" } %>
+					<%= link_to "Edit Team", edit_team_path(@team.id), class: "lighter-link" %><br>
+					<%= link_to "Delete Team", team_path(@team), method: :delete, data: { confirm: "Are you sure?" }, class: "lighter-link"  %>
 				<% end %>
 			</div>
-			<table class="full-width"><tr>
-					<td style="text-align:right; width:50%"><%= button_to "Back to Teams", teams_path, method: :get, class: "team-btn"%></td>
-					<td style="text-align:left; width:50%"><%= button_to "My Profile", user_path(current_user), method: :get, class: "team-btn"%></td>
+
+			<table class="full-width" style="margin-top:1%"><tr>
+					<td style="text-align:right; width:50%; padding-right:2px"><%= button_to "Back to Teams", teams_path, method: :get, class: "team-btn"%></td>
+					<td style="text-align:left; width:50%; padding-left:2px"><%= button_to "My Profile", user_path(current_user), method: :get, class: "team-btn"%></td>
 			</tr></table>
 
 		</div>
