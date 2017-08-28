@@ -8,17 +8,19 @@
 				<table class="full-width">
 
 					<tr>
-						<td colspan="2" style="text-align:center"><% unless @user.avatar.file.nil? %>
-							<img src=<%= @user.avatar.url%> style="height: 100px; width: 100px"><br>
+						<td colspan="2" style="text-align:center; padding-bottom:15px; padding-top:10px"><% if @user.avatar.file.nil? %>
+							<%=image_tag("no_avatar.jpg", style: "height: 100px; width: 100px; border-radius:50%")%>
+							<%else%>
+							<img src=<%= @user.avatar.url%> style="height: 100px; width: 100px; border-radius:50%">
 							<% end %></td>
 					</tr>
 
 					<tr>
-						<td colspan="2" style="text-align:center"><%=@user.name%></td>
+						<td class="team-leader" colspan="2" style="text-align:center; font-weight:400"><%=@user.name%></td>
 					</tr>
 
 					<tr>
-						<td colspan="2" style="text-align:center"><%=@user.email%></td>
+						<td class="team-leader"  colspan="2" style="text-align:center ;padding-bottom:25px"><%=@user.email%></td>
 					</tr>
 
 					<tr>
@@ -32,9 +34,13 @@
 			<h4 class="profile-title" style="margin-top: 20px;">Pending approvals :</h4>
 			<div class="well well-md profile-well">
 				<% if UserTeamApproval.where(user_id: @user.id) %>
-					<% UserTeamApproval.where(user_id: @user.id).each do |approval| %>
-						<%= link_to Team.find(approval.team_id).name, team_path(approval.team_id) %>
-					<% end %>
+					<table>
+						<% UserTeamApproval.where(user_id: @user.id).each do |approval| %>
+						<tr>
+							<td><%= link_to Team.find(approval.team_id).name, team_path(approval.team_id), class: "team-join", style: "font-size: 18px" %></td>
+						</tr>
+						<%end%>
+					</table>
 				<% else %>
 					 <h5 class="well-content">No pending approvals.</h5>
 				<% end %>
@@ -46,7 +52,7 @@
 			<div class="well well-md profile-well">
 				<% if @user.teams.count != 0 %>
 					<% @user.teams.each do |team| %>
-						<%= team.name %><br>
+						<em><%=link_to team.name, team_path(team.id), class: "team-name", style: "font-size:29px" %></em>
 					<% end %>
 				<% else%>
 					<h5 class="well-content">You are not a part of any Teams at the moment.</h5>
@@ -60,7 +66,7 @@
 				<% @teams = Team.where(user_id: @user.id) %>
 				<% if @teams.count != 0 %>
 					<% @teams.each do |team| %>
-						<%= link_to team.name, team_path(team) %><br>
+						<em><%= link_to team.name, team_path(team), class: "team-name", style: "font-size:32px" %></em><br>
 					<% end %>
 				<% else %>
 					<h5 class="well-content">You are not the Team Leader of any Teams at the moment.</h5>
@@ -77,4 +83,5 @@
 
 		</div>
 	</div>
-</div><br>
+</div>
+<div style="height:50px"></div>
