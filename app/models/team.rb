@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+	mount_uploader :avatar, AvatarUploader
 	validates :user_id, presence: true
 	validates :name, uniqueness: true, on: [:create]
 	has_many :user_team_approvals
