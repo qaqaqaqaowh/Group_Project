@@ -8,10 +8,15 @@
 				<table class="full-width">
 
 					<tr>
+<<<<<<< HEAD
 						<td colspan="2" style="text-align:center; padding-bottom:15px; padding-top:10px"><% if @user.avatar.file.nil? %>
 							<%=image_tag("no_avatar.jpg", style: "height: 100px; width: 100px; border-radius:50%")%>
 							<%else%>
 							<img src=<%= @user.avatar.url%> style="height: 100px; width: 100px; border-radius:50%">
+=======
+						<td colspan="2" style="text-align:center"><% unless @user.avatar.file.nil? %>
+							<img src=<%= @user.avatar.url%> style="height: 100px;"><br>
+>>>>>>> master
 							<% end %></td>
 					</tr>
 
