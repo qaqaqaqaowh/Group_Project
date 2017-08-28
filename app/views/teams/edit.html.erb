@@ -1,3 +1,14 @@
-<h1>Edit</h1>
-<%= render "edit" %>
-<%= link_to "Back", team_path(params[:id].to_i) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Edit Team : </h2>
+
+      <div class="well well-md" style="margin-top:20px; margin-bottom:20px; width:100%">
+          <%= render "teams/edit" %>
+      </div>
+
+      <%= link_to "Back", team_path(params[:id].to_i), class: "lighter-link" %>
+    </div>
+
+  </div>
+</div>
