@@ -1,7 +1,7 @@
 class SessionsController < Clearance::SessionsController
 	def redirect_signed_in_users
 	    if signed_in?
-	      redirect_to current_user
+	      redirect_to tournaments_path
 	    end
 	end
 

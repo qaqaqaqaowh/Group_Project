@@ -41,6 +41,12 @@ class TournamentsController < ApplicationController
 		@tournament.destroy
 		redirect_to tournaments_path
 	end
+
+	def sport
+	end
+
+	def sports
+	end
 end
 
 private

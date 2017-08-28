@@ -6,11 +6,11 @@
       </div>
       <div id="navbar6" class="navbar-collapse collapse">
       	<ul class="nav navbar-nav">
-      	  <li><%= link_to "Home", tournaments_path %></li>
-          <li><%= link_to "Host Tournament", new_tournament_path %></li>
-          <li><a href="#">Join Tournament</a></li>
-          <li><a href="#">News</a></li>
-          <li><a href="#">Contact Us</a></li>
+      	  <li class="nav-tab"><%= link_to "Home", tournaments_path %></li>
+          <li class="nav-tab"><%= link_to "Host Tournament", new_tournament_path %></li>
+          <li class="nav-tab"><%= link_to "Find Tournament", tournament_sports_path %></li>
+          <li class="nav-tab"><a href="#">News</a></li>
+          <li class="nav-tab"><a href="#">Contact Us</a></li>
       	</ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
@@ -38,7 +38,7 @@
           </ul>
           </li>
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding-bottom: 10px; padding-top: 10px;">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding-top: 10px;">
           <% if current_user.avatar.file.nil? %>
             <span class="fa fa-user-circle-o"></span>
           <% else %>
