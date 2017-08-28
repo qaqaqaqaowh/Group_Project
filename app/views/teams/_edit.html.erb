@@ -1,9 +1,10 @@
 <%= form_for @team do |t| %>
-	<%= t.label "Team Name" %><br>
-	<%= t.text_field :name %><br>
-	<%= t.label "Description" %><br>
-	<%= t.text_field :description %><br>
-	Team Leader ID (Current Leader: <%= User.find(@team.user_id).name %>)<br>
-	<%= t.text_field :user_id %><br>
-	<%= t.submit "Change" %>
+	<h3>Team Name :</h3>
+	<%= t.text_field :name, class: "text-field" %>
+	<h3>Team Description :</h3>
+	<%= t.text_area :description, class: "text-field", style: "height:130px;" %>
+	<h3>Team Leader ID (Current Leader: <%= User.find(@team.user_id).name %>)</h3>
+	<%= t.text_field :user_id, class: "text-field" %><br>
+	<br>
+	<%= t.submit "Time for Change", class: "btn btn-warning edit-button" %>
 <% end %>
