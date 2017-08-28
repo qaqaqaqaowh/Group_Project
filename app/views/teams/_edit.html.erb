@@ -1,4 +1,6 @@
 <%= form_for @team do |t| %>
+	<h3>Team Avatar :</h3>
+	<%= t.file_field :file %>
 	<h3>Team Name :</h3>
 	<%= t.text_field :name, class: "text-field" %>
 	<h3>Team Description :</h3>
