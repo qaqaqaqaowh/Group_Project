@@ -3,23 +3,54 @@
     <hr>
     <div class="row">
         <div class="col-md-7">
-        <%= image_tag("football_action.jpg", class: "img-responsive", style: "width:700px; height:400px;") %>
+        <%= image_tag("football_action.jpg", class: "img-responsive", style: "width:700px; height:400px; border-radius:10%;") %>
         </div>
         		<div class="col-md-5">
                     <div class="card">
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="color: white;">Overview</a></li>
-                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="color: white;">Participants</a></li>
-                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="color: white;">Bracket</a></li>
-                            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="color: white;">Settings</a></li>
+                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="color: white;">Description</a></li>
+                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="color: white;">Participants</a></li>
+                            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="color: white;">Bracket</a></li>
                         </ul>
 
                             <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                            <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
-                            <div role="tabpanel" class="tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                            <div role="tabpanel" class="tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="row">
+                            <div class="col-sm-4"><h4><strong>Location:</strong></h4></div>
+                            <div class="col-sm-5"><h4><%= @tournament.location %></h4></div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-4"><h4><strong>Start Date:</strong></h4></div>
+                            <div class="col-sm-5"><h4><%= @tournament.start_date.strftime('%d %B %Y') %></h4></div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-4"><h4><strong>End Date:</strong></h4></div>
+                            <div class="col-sm-5"><h4><%= @tournament.end_date.strftime('%d %B %Y') %></h4></div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-4"><h4><strong>Sport:</strong></h4></div>
+                            <div class="col-sm-5"><h4><%= @tournament.sport %></h4></div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-4"><h4><strong>Category:</strong></h4></div>
+                            <div class="col-sm-5"><h4><%= @tournament.category %></h4></div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-4"><h4><strong>Entry Fee:</strong></h4></div>
+                            <div class="col-sm-5"><h4>RM<%= @tournament.fee %></h4></div>
+                            </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                            <h4><small style="color:white;"><%= @tournament.description %></small></h4>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="messages">
+                            <h4><small style="color:white;">No participants yet</small></h4>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="settings">
+                            <h4><small style="color:white;">The brackets are generated 1 day before tournament begins.</small></h4>
+                            </div>
                         </div>
                     </div>
                 </div>
