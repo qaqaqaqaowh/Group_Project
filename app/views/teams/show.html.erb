@@ -20,12 +20,15 @@
 
 					<table class="full-width">
 						<% @team.users.each do |member| %>
-						<tr>
-							<td><%= member.name %></td>
 							<% if current_user.email == (User.find(@team.user_id)).email %>
-							<td><%= link_to "Sack member", show_members_path(team_id: @team.id), class: "lighter-link" %></td>
-							<%end%>
-						</tr>
+								<tr>
+									<td><%= link_to "#{member.name}", delete_member_path(team_id: @team.id, user_id: member.id), method: :post, data: { confirm: "Are you sure that you wanted to sack #{member.name}???" } %></td>
+								</tr>
+							<% else %>
+								<tr>
+									<td><%= member.name %></td>
+								</tr>
+							<% end %>
 						<% end %>
 					</table>
 				<%else%>
