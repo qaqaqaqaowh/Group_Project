@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   get "/user/:user_id/teams" => "users#myteam", as: "my_team"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   resources :tournaments
+  get "/tournaments/:id/join" => "tournaments#join", as: "join_tournament"
+  post "/tournaments/:id/approve" => "tournaments#approve", as: "approve_team_tournament"
+  get 'payment/new'
+  post 'payment/checkout'
 end
