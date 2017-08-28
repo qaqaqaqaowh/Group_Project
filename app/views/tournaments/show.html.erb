@@ -1,60 +1,4 @@
-<%if @tournament.user_id==current_user.id%>
-    <p><strong>Admin's Section:</strong></p>
-    <%= link_to 'Edit This Tournament', edit_tournament_path(@tournament)%>|||
-        <%= link_to 'Delete This Tournament', tournament_path(@tournament), method: :delete, data: {confirm: "Sure?"}  %>
 
-    <%@tournament.teams.each do |team|%>
-    Team Name:<%=team.name%><br>
-    Admin ID: <%=team.id%><br>
-    Approval: 
-        <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).approval%>
-        <%="Approved,  "%>
-        <%=link_to "DISAPPROVE!",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:false), method: :post %>
-        <!-- link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post -->
-
-        <%else%>
-        <%="Pending!  "%>
-        <%=link_to "APPROVE!",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:true), method: :post %>
-        <%end%><br>
-
-    Payment Status: 
- <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).payment_status%>
-        <%="Paid"%>
-        <%else%>
-        <%="Not paid!"%>
-        <%end%><br>
-<br><br>
-    <%end%>
-<%end%>
-
-
-    <p><strong>Team's Section:</strong></p>
-<% if @team %>
-     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)%>
-       Approval Status: 
-            <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).approval%>
-            <%="Approved"%>
-            <%else%>
-            <%="Pending!"%>
-            <%end%><br>
-
-        Payment Status: 
-     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).payment_status%>
-            <%="Paid"%>
-            <%else%>
-            <%="Not paid!"%>
-            <%end%><br>
-
-
-
-    <%else%>
-    <%=link_to "JOIN THIS TOURNAMENT!",join_tournament_path%>
-    <%end%>
-
-<%else%>
-<%="Create A TEAM FIRST!"%>
-
-<%end%>
 <div class="container">
     <h1 class="title"><%= @tournament.title %></h1>
     <br>
@@ -113,4 +57,63 @@
                 </div>
         	</div>
             <br></br>
+
+    <%if @tournament.user_id==current_user.id%>
+    <p><strong>Admin's Section:</strong></p>
+    <%= link_to 'Edit This Tournament', edit_tournament_path(@tournament)%>|||
+        <%= link_to 'Delete This Tournament', tournament_path(@tournament), method: :delete, data: {confirm: "Sure?"}  %>
+
+    <%@tournament.teams.each do |team|%>
+    Team Name:<%=team.name%><br>
+    Admin ID: <%=team.id%><br>
+    Approval: 
+        <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).approval%>
+        <%="Approved,  "%>
+        <%=link_to "DISAPPROVE!",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:false), method: :post %>
+        <!-- link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post -->
+
+        <%else%>
+        <%="Pending!  "%>
+        <%=link_to "APPROVE!",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:true), method: :post %>
+        <%end%><br>
+
+    Payment Status: 
+ <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).payment_status%>
+        <%="Paid"%>
+        <%else%>
+        <%="Not paid!"%>
+        <%end%><br>
+<br><br>
+    <%end%>
+<%end%>
+
+
+    <p><strong>Team's Section:</strong></p>
+<% if @team %>
+     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)%>
+       Approval Status: 
+            <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).approval%>
+            <%="Approved"%>
+            <%else%>
+            <%="Pending!"%>
+            <%end%><br>
+
+        Payment Status: 
+     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).payment_status%>
+            <%="Paid"%>
+            <%else%>
+            <%="Not paid!"%>
+            <%end%><br>
+
+
+
+    <%else%>
+    <%=link_to "JOIN THIS TOURNAMENT!",join_tournament_path%>
+    <%end%>
+
+<%else%>
+<%="Create A TEAM FIRST!"%>
+
+<%end%>
+
 </div>
