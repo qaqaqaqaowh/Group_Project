@@ -13,6 +13,10 @@ class TournamentsController < ApplicationController
 		# byebug
 		@tournament = Tournament.new(valid_params)
 		if @tournament.save
+			if params[:tournament][:file]
+				@tournament.avatar = params[:tournament][:file]
+				@tournament.save!
+			end
 			redirect_to tournaments_path
 		else
 			render 'new'
@@ -30,6 +34,10 @@ class TournamentsController < ApplicationController
 	def update
 		@tournament = Tournament.find(params[:id])
 		if @tournament.update(valid_params)
+			if params[:tournament][:file]
+				@tournament.avatar = params[:tournament][:file]
+				@tournament.save!
+			end
 			redirect_to tournament_path(@tournament)
 		else
 			render 'edit'
