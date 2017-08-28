@@ -12,14 +12,14 @@
         <div class="line middle"></div>
         <h3 class="title-caption">Compete, Organize and Earn from Tournaments.</h3>
         <% if current_user%>
-        <%=link_to 'Join Us', user_path(current_user), class: "btn btn-warning title-button middle"%>
+        <%=link_to 'Join Us', tournaments_path, class: "btn btn-warning title-button middle"%>
         <%else%>
         <%=link_to 'Join Us', sign_up_path, class: "btn btn-warning title-button middle"%>
         <%end%>
 
       <td class="log-in-btn">
         <% if current_user%>
-        <%=link_to 'Log In', user_path(current_user), class: "btn btn-warning log-in"%>
+        <%=link_to 'Log In', tournaments_path, class: "btn btn-warning log-in"%>
         <%else%>
         <%=link_to 'Log In', sign_in_path, class: "btn btn-warning log-in"%>
         <%end%>

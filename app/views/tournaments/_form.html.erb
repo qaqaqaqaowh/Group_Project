@@ -22,9 +22,9 @@
 	<div class="form-group" id="new-tour-form">
 	<div class="row">
 	<div class="col-sm-2"><p><%= f.label :sport, class: 'control-label' %></p></div>
-	<div class="col-sm-4"><%= f.text_field :sport, class: 'form-control' %></div>
+	<div class="col-sm-4"><%= f.select :sport, options_for_select(["Football", "Futsal", "Basketball","Badminton", "Tennis", "Table Tennis", "Volleyball", "Squash", "Bowling", "Field Hockey", "Floorball"]), {}, :class => "form-control" %></div>
 	<div class="col-sm-2"><p><%= f.label :category, class: 'control-label' %></p></div>
-	<div class="col-sm-4"><%= f.text_field :category, class: 'form-control' %></div>
+	<div class="col-sm-4"><%= f.select :category, options_for_select(["Group & Knockout", "Knockout", "League"]), {}, :class => "form-control" %></div>
     </div>
     </div>
 

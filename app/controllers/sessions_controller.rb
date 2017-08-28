@@ -1,7 +1,7 @@
 class SessionsController < Clearance::SessionsController
 	def redirect_signed_in_users
 	    if signed_in?
-	      redirect_to current_user
+	      redirect_to tournaments_path
 	    end
 	end
 
@@ -15,7 +15,7 @@ class SessionsController < Clearance::SessionsController
 
 	def url_for_signed_in_users
 		url_after_create
-	end
+  end
 
 	def create_from_omniauth
     	auth_hash = request.env["omniauth.auth"]
