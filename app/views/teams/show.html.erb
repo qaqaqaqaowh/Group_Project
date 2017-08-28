@@ -1,5 +1,7 @@
 <table class="full-width">
+		<% unless @team.avatar.file.nil? %>
 		<tr><td style="text-align:center"><img style="height: 339px" src=<%= @team.avatar.url %> ></td></tr>
+		<% end %>
 		<tr><td style="text-align:center"><h1 class="title"><%= @team.name %></h1></td></tr>
 		<tr><td style="text-align:center"><h4><%= @team.description %></h4></td></tr>
 		<tr><td style="text-align:center">By: <%= (User.find(@team.user_id)).name %><br></td></tr>
