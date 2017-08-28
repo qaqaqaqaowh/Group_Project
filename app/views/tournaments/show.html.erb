@@ -1,4 +1,7 @@
 <div class="container">
+    <%if @tournament.avatar?%>
+    <img src=<%=@tournament.avatar.url%> style="float:right; height: 100px; width: 100px; border-radius:50%")>
+    <%end%>
     <h2><%= @tournament.title %></h2>
     <hr>
     <div class="row">
