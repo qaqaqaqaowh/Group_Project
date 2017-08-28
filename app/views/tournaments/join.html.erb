@@ -1,0 +1,19 @@
+<h1>TOURNAMENT#JOIN</h1>
+
+
+<h2>Status:</h2>
+	<h3>Payment Status:
+	<%if !@tournament_team.payment_status%>
+	<%= "Pending"%>
+	<%else%>
+	 <%= "Paid"%>
+	 <%end%>
+	 </h3>
+	<h3>Admin's Approval: 
+		<%if !@tournament_team.approval%>
+	<%= "Pending"%>
+	<%else%>
+	 <%= "Approved"%>
+	 <%end%>
+	</h3>
+

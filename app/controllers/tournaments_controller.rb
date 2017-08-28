@@ -25,6 +25,7 @@ class TournamentsController < ApplicationController
 
 	def show
 		@tournament = Tournament.find(params[:id])
+		@team=Team.find_by_user_id(current_user.id)
 	end
 
 	def edit
@@ -48,6 +49,32 @@ class TournamentsController < ApplicationController
 		@tournament = Tournament.find(params[:id])
 		@tournament.destroy
 		redirect_to tournaments_path
+	end
+
+	def join
+		@team=Team.find_by_user_id(current_user.id)
+		@tournament=Tournament.find(params[:id])
+		@tournament_team=TournamentTeamApprov.new(team_id:@team.id,tournament_id:@tournament.id,payment_status:false, approval:false )
+		@tournament_team.save
+ 		@tournament_team=TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)
+ 		# byebug
+ 		redirect_to payment_new_path(team_id: @team.id,tournament_id:@tournament.id,total:@tournament.fee)
+
+ 		# @tournament_team.update(payment_status:false,approval:false)
+	end
+
+	def approve
+		# byebug
+		@tournament=Tournament.find(params[:tournament_id])
+		@team=Team.find(params[:team_id])
+		if @tournament.user_id==current_user.id
+
+			# byebug
+			@tournament_team=TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)
+			@tournament_team.update(approval:params[:approval])
+		end
+		redirect_to tournament_path
+
 	end
 end
 

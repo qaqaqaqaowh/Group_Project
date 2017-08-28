@@ -1,4 +1,5 @@
 class TournamentTeamApprov < ApplicationRecord
-	belongs_to :tournaments
-	belongs_to :teams
+	belongs_to :tournament
+	belongs_to :team
+	validates_uniqueness_of :team_id, scope: :tournament_id
 end
