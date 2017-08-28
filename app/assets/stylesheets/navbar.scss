@@ -1,12 +1,21 @@
 #navbar6 {
-  width: 1250px;
+  width: 1270px;
 }
 .example6 .navbar-brand{ 
   background: url(logo.png) center / contain no-repeat;
-  width: 200px;  
+  width: 220px;
+  height: 58px; 
 }
 
 .navbar {
-	margin-left: -140px;
+	margin-left: -178px;
 	background-color: rgb(33, 39, 53);
+}
+
+.dropdown {
+	padding-top: 4px;
+}
+
+.nav-tab {
+	padding-top: 4px;
 }

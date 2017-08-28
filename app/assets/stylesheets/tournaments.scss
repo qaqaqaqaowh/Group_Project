@@ -25,14 +25,36 @@
 }
 
 #tournament-index {
-	padding: 10px;
+	padding: 15px;
 	margin-top: 10px;
+	border-color: transparent;
+}
+
+#tournament-index:hover {
+	border-color: white;
 }
 
 hr{
-  border-top: 1px solid orange;
+  border-top: 1px;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
 	background-color: #212735;
+}
+
+p {
+	font-family: Raleway;
+}
+
+.col-sm-4 {
+	padding-top: 10px;
+}
+
+.col-sm-5 {
+	padding-top: 10px;
+}
+
+.card.well {
+	margin-top: 0px;
+	border-radius: 20px;
 }

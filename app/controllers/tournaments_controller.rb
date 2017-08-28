@@ -51,6 +51,12 @@ class TournamentsController < ApplicationController
 		redirect_to tournaments_path
 	end
 
+	def sport
+	end
+
+	def sports
+  end
+  
 	def join
 		@team=Team.find_by_user_id(current_user.id)
 		@tournament=Tournament.find(params[:id])
@@ -74,7 +80,6 @@ class TournamentsController < ApplicationController
 			@tournament_team.update(approval:params[:approval])
 		end
 		redirect_to tournament_path
-
 	end
 end
 

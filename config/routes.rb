@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post "/team/:team_id/delete/user/:user_id" => "teams#deletemember", as:  "delete_member"
   get "/user/:user_id/teams" => "users#myteam", as: "my_team"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  get "/tournaments/sports" => "tournaments#sports", as: "tournament_sports"
+  get "/tournaments/sports/:sport" => "tournaments#sport", as: "tournaments_sport"
   resources :tournaments
   get "/tournaments/:id/join" => "tournaments#join", as: "join_tournament"
   post "/tournaments/:id/approve" => "tournaments#approve", as: "approve_team_tournament"
