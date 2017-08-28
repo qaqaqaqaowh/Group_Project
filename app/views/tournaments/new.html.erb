@@ -1,4 +1,25 @@
-TOURNAMENT#NEW
+<div class="container">
+	<div class="row">
+		<div class="ol-lg-10 col-lg-offset-1" id="new-tour-header">
+			<h1>Hi, <%= current_user.first_name %>! Lets get started with your tournament</h1>
+		</div>
+	</div>
+
+  	<div class="row">
+    	<div class="col-lg-6 col-lg-offset-2">
+      		<div class="well" id="tournament-new">
+          
+          		<%= render 'form' %>
+
+          		<div class="form-group">
+          		<p><small>By registering a tournament, I accept SportsJOE's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></small></p>
+          		</div>
+          
+        
+      		</div>
+          	<br></br>
+    	</div>
+  	</div>
+</div>
 
 
-<%= render 'form' %>

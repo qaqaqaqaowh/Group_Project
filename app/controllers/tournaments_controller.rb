@@ -1,4 +1,6 @@
 class TournamentsController < ApplicationController
+	before_action :require_login
+
 	def index
 		@tournaments = Tournament.all
 	end
@@ -11,7 +13,7 @@ class TournamentsController < ApplicationController
 		# byebug
 		@tournament = Tournament.new(valid_params)
 		if @tournament.save
-			redirect_to tournament_path(@tournament)
+			redirect_to tournaments_path
 		else
 			render 'new'
 		end

@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
+	before_action :require_login
+
 	def index
-		@teams = Team.all	
+		@teams = Team.all
 	end
 
 	def new
@@ -16,8 +18,13 @@ class TeamsController < ApplicationController
 	end
 
 	def create
-		@team = Team.new(valid_params)
+		@team = Team.new(team_params)
+		@team.user_id = current_user.id
 		if @team.save
+			if params[:team][:file]
+				@team.avatar = params[:team][:file]
+				@team.save!
+			end
 			redirect_to team_path(@team)
 		else
 			render 'new'
@@ -26,7 +33,11 @@ class TeamsController < ApplicationController
 
 	def update
 		@team = Team.find(params[:id])
-		if @team.update(valid_params)
+		if @team.update(edit_params)
+			if params[:team][:file]
+				@team.avatar = params[:team][:file]
+				@team.save!
+			end
 			redirect_to team_path(@team)
 		else
 			render "edit"
@@ -35,12 +46,24 @@ class TeamsController < ApplicationController
 
 	def destroy
 		@team = Team.find(params[:id])
+		@team.users.delete
 		@team.destroy
 		redirect_to teams_path
+	end
+
+	def deletemember
+		@team = Team.find(params[:team_id])
+		@user = User.find(params[:user_id])
+		@team.users.delete(@user)
+		redirect_to team_path(@team)
 	end
 end
 
 private
-def valid_params
-	params.require(:team).permit(:name, :description, :admin_id)
+def team_params
+	params.require(:team).permit(:name, :description)
+end
+
+def edit_params
+	params.require(:team).permit(:name, :description, :user_id)
 end

@@ -52,3 +52,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'clearance'
 gem 'pg'
+gem 'carrierwave'
+gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'figaro'

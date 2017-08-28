@@ -1,3 +1,111 @@
-<%= link_to "Sign in", sign_in_path %>
-<%= link_to "Sign up", sign_up_path %>
-<%= link_to "Sign out", sign_out_path, method: :delete %>
+  <div class="landing_video">
+    <video class="landing_video" muted autoplay loop >
+    <source src="group_vid.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <table class="vid_content">
+    <tr>
+      <td class="table-space"></td>
+
+      <td><image class="logo" src="logo.png"><h1 class="title">JOIN.ORGANIZE.EARN</h1>
+        <div class="line middle"></div>
+        <h3 class="title-caption">Compete, Organize and Earn from Tournaments.</h3>
+        <% if current_user%>
+        <%=link_to 'Join Us', user_path(current_user), class: "btn btn-warning title-button middle"%>
+        <%else%>
+        <%=link_to 'Join Us', sign_up_path, class: "btn btn-warning title-button middle"%>
+        <%end%>
+
+      <td class="log-in-btn">
+        <% if current_user%>
+        <%=link_to 'Log In', user_path(current_user), class: "btn btn-warning log-in"%>
+        <%else%>
+        <%=link_to 'Log In', sign_in_path, class: "btn btn-warning log-in"%>
+        <%end%>
+      </td>
+    </tr>
+  </table>
+
+<div class="container landing_container">
+  <div class="row">
+    <div class="col-md-12">
+
+  <div class="container section">
+      <div class="row">
+
+          <div class="col-md-7">
+            <h1 class="section-title">
+            Compete</h1>
+            <div class="line"></div>
+            <h4 style="color:white; width:600px; margin-bottom:20px">
+              Compete in any of the upcoming tournaments to get your share of adrenaline and experience. Meet players just like you! Improve on the foundation that's sole purpose is unity, the act of Sport.
+            </h4>
+            <%=link_to 'JOIN A TOURNAMENT', tournaments_path, class: "btn btn-warning section-button"%>
+          </div>
+
+          <div class="col-md-5">
+            <img class="section-image-right reflection" src="basketball.jpg">
+          </div>
+
+      </div>
+    </div>
+
+  <div class="container section">
+    <div class="row">
+
+      <div class="col-md-5">
+        <img class="section-image-left reflection" src="football.png">
+      </div>
+      <div class="col-md-7">
+        <h1 class="section-title">
+          Connect</h1>
+          <div class="line"></div>
+        <h4 style="color:white; width:600px; margin-bottom:20px">
+            Connect with like-minded players from all across Malaysia. Branch out to find stepping stones in your journey of mastering the sport of your choice.
+        </h4>
+        <%=link_to 'MAKE A TEAM', new_team_path, class: "btn btn-warning section-button"%>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="container section">
+      <div class="row">
+
+        <div class="col-md-12">
+          <h1 class="section-title-middle">Host a Tournament</h1>
+          <div class="line middle" style="width:500px;">
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="padding-top:30px">
+        <div class="col-md-3">
+            <%= image_tag 'search.png', class: 'icon-image center-block' %>
+            <h4 class="landing-caption">Search</h4>
+        </div>
+        <div class="col-md-3">
+            <%= image_tag 'team.png', class: 'icon-image center-block' %>
+            <h4 class="landing-caption">Team</h4>
+        </div>
+        <div class="col-md-3">
+            <%= image_tag 'handshake.png', class: 'icon-image center-block' %>
+            <h4 class="landing-caption">Meet</h4>
+        </div>
+        <div class="col-md-3">
+            <%= image_tag 'cup.png', class: 'icon-image center-block' %>
+            <h4 class="landing-caption">Win</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <%=link_to 'Host a Tournament', new_tournament_path, class: "btn btn-warning center-block icon-button"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

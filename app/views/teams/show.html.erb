@@ -1,0 +1,50 @@
+<table class="full-width">
+		<tr><td style="text-align:center"><h1 class="title"><%= @team.name %></h1></td></tr>
+		<tr><td style="text-align:center"><h4><%= @team.description %></h4></td></tr>
+		<tr><td style="text-align:center">By: <%= (User.find(@team.user_id)).name %><br></td></tr>
+</table>
+
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<table class="full-width"><tr>
+					<td><h2>Members :</h2></td>
+					<% if current_user.email == (User.find(@team.user_id)).email %>
+					<td class="right-text" style="vertical-align: bottom; padding-bottom:10px;"><%= link_to "Join requests (#{UserTeamApproval.where(team_id: @team.id).count})", user_team_approvals_path(@team.id), class: "lighter-link"%></td><%end%>
+				</tr></table>
+
+			<div class="well well-md profile-well" style="width:100%">
+				<% if @team.users.count != 0 %>
+
+					<table class="full-width">
+						<% @team.users.each do |member| %>
+							<% if current_user.email == (User.find(@team.user_id)).email %>
+								<tr>
+									<td><%= link_to "#{member.name}", delete_member_path(team_id: @team.id, user_id: member.id), method: :post, data: { confirm: "Are you sure that you wanted to sack #{member.name}???" } %></td>
+								</tr>
+							<% else %>
+								<tr>
+									<td><%= member.name %></td>
+								</tr>
+							<% end %>
+						<% end %>
+					</table>
+				<%else%>
+					<h4 class="well-content">There are no members in this team yet.</h4>
+				<% end %>
+				<% if current_user.email == (User.find(@team.user_id)).email %>
+					<%= link_to "Edit Team", edit_team_path(@team.id), class: "lighter-link" %><br>
+					<%= link_to "Delete Team", team_path(@team), method: :delete, data: { confirm: "Are you sure?" }, class: "lighter-link"  %>
+				<% end %>
+			</div>
+
+			<table class="full-width" style="margin-top:1%"><tr>
+					<td style="text-align:right; width:50%; padding-right:2px"><%= button_to "Back to Teams", teams_path, method: :get, class: "team-btn"%></td>
+					<td style="text-align:left; width:50%; padding-left:2px"><%= button_to "My Profile", user_path(current_user), method: :get, class: "team-btn"%></td>
+			</tr></table>
+
+		</div>
+	</div>
+</div>

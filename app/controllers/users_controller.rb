@@ -1,4 +1,6 @@
 class UsersController < Clearance::UsersController
+  before_action :require_login, only: [:edit, :update, :destroy]
+
 	def url_after_create
 		user_path(current_user)
 	end
@@ -10,20 +12,55 @@ class UsersController < Clearance::UsersController
 	end
 
 	def show
-		@user = User.find(current_user.id)
+		@user = User.find(params[:id])
 	end
 
 	def user_from_params
-    	email = user_params.delete(:email)
-    	password = user_params.delete(:password)
-    	first_name = user_params.delete(:first_name)
-      last_name = user_params.delete(:last_name)
+    email = user_params.delete(:email)
+    password = user_params.delete(:password)
+    first_name = user_params.delete(:first_name)
+    last_name = user_params.delete(:last_name)
 
-    	Clearance.configuration.user_model.new(user_params).tap do |user|
-      		user.email = email
-      		user.password = password
-      		user.first_name = first_name
-          user.last_name = last_name
-      end
+    Clearance.configuration.user_model.new(user_params).tap do |user|
+      user.email = email
+      user.password = password
+      user.first_name = first_name
+      user.last_name = last_name
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(edit_params_user)
+      if params[:user][:file]
+        @user.avatar = params[:user][:file]
+        @user.save!
+      end
+      redirect_to @user
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.teams.delete
+    @user.destroy
+    sign_out
+    redirect_to welcome_index_path
+  end
+
+  def myteam
+    @user = User.find(params[:user_id])
+    @myteams = @user.teams
+  end
+end
+
+private
+def edit_params_user
+  params.require(:user).permit(:first_name, :last_name)
 end

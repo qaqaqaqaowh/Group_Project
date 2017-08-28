@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Edit Profile : </h2>
+
+      <div class="well well-md" style="margin-top:20px; margin-bottom:20px; width:100%">
+          <%= render "edit" %>
+      </div>
+
+      <%= link_to "Back", user_path(current_user.id), class: "lighter-link" %>
+    </div>
+
+  </div>
+</div>
