@@ -2,17 +2,22 @@
 <div class="container">
     <h1 class="title"><%= @tournament.title %></h1>
     <br>
+    <div class="card well">
     <div class="row">
+    
         <div class="col-md-4">
-        <%= image_tag("football1.jpg", class: "img-responsive", style: "width:320px; height:320px; border-radius:10%;") %>
+        <%= image_tag(@tournament.avatar, class: "img-responsive", style: "width:320px; height:320px; border-radius:10%;") %>
         </div>
         		<div class="col-md-6">
-                    <div class="card well">
+                    
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="color: white;">Overview</a></li>
                             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="color: white;">Description</a></li>
                             <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="color: white;">Participants</a></li>
-                            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="color: white;">Bracket</a></li>
+                            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="color: white;">Rules</a></li>
+                             <%if @tournament.user_id==current_user.id%>
+                             <li role="presentation"><a href="#admin" aria-controls="settings" role="tab" data-toggle="tab" style="color: white;">Admin</a></li>
+                             <%end%>
                         </ul>
 
                             <!-- Tab panes -->
@@ -44,16 +49,26 @@
                             </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="profile">
-                            <h4><small style="color:white;"><%= @tournament.description %></small></h4>
+                            <div class="description"><p><%= @tournament.description %></p></div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="messages">
-                            <h4><small style="color:white;">No participants yet</small></h4>
+                            <ol>
+                            <%@tournament.teams.each do |team|%>
+                                <li class="tournament-team"><%= team.name %></li>
+                            <%end%>
+                            </ol>                       
                             </div>
                             <div role="tabpanel" class="tab-pane" id="settings">
-                            <h4><small style="color:white;">The brackets are generated 1 day before tournament begins.</small></h4>
+                            <div class="description"><p><%= @tournament.rules %></p></div>
+                            </div>
+                            
+                            <div role="tabpanel" class="tab-pane" id="admin">
+                            <div class="description"><p><%= link_to 'Edit This Tournament', edit_tournament_path(@tournament)%></p><br>
+        <p><%= link_to 'Delete This Tournament', tournament_path(@tournament), method: :delete, data: {confirm: "Sure?"}  %></p></div>
                             </div>
                         </div>
-                    </div>
+                  
+                </div>
                 </div>
         	</div>
             <br></br>
