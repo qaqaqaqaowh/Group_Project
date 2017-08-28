@@ -52,7 +52,7 @@
 			<div class="well well-md profile-well">
 				<% if @user.teams.count != 0 %>
 					<% @user.teams.each do |team| %>
-						<em><%=link_to team.name, team_path(team.id), class: "team-name", style: "font-size:29px" %></em>
+						<em><%=link_to team.name, team_path(team.id), class: "team-name", style: "font-size:32px" %></em>
 					<% end %>
 				<% else%>
 					<h5 class="well-content">You are not a part of any Teams at the moment.</h5>
