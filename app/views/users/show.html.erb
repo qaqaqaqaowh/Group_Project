@@ -27,11 +27,12 @@
 						<td class="team-leader"  colspan="2" style="text-align:center ;padding-bottom:25px"><%=@user.email%></td>
 					</tr>
 
-					<tr>
-						<td><%= link_to "Edit Profile", edit_user_path(@user), class: "lighter-link"%></td>
-						<td style="text-align:right"><%= link_to "Delete Account",user_path(@user), method: :delete, data: { confirm: "Are you sure??" }, class: "lighter-link"%></td>
-					</tr>
-
+					<% if current_user.id == @user.id %>
+						<tr>
+							<td><%= link_to "Edit Profile", edit_user_path(@user), class: "lighter-link"%></td>
+							<td style="text-align:right"><%= link_to "Delete Account",user_path(@user), method: :delete, data: { confirm: "Are you sure??" }, class: "lighter-link"%></td>
+						</tr>
+					<% end %>
 				</table>
 			</div>
 

@@ -48,6 +48,15 @@ class UsersController < Clearance::UsersController
 
   def destroy
     @user = User.find(params[:id])
+    @teams = Team.where(user_id: @user.id)
+    @teams.each do |team|
+      if team.users.first
+        team.update(user_id: team.users.first.id)
+        team.users.delete(team.users.first)
+      else
+        team.destroy
+      end
+    end
     @user.teams.delete
     @user.destroy
     sign_out
