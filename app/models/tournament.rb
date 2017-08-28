@@ -1,4 +1,5 @@
 class Tournament < ApplicationRecord
+	mount_uploader :avatar, AvatarUploader
 	belongs_to :user
 	validates :location, presence: true
 	validates :start_date, presence: true
