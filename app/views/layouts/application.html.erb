@@ -22,8 +22,10 @@
 
   <body>
     <%# unless current_page?(welcome_index_path) || current_page?(sign_in_path) || current_page?(sign_up_path) %>
+    <% unless current_page?(welcome_index_path) %>
     <% if signed_in? %>
   	 <%= render partial: "layouts/navbar" %>
+     <%end%>
      <%end%>
     <%= yield %>
     <%= render partial: "layouts/footer" %>

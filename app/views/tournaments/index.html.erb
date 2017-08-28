@@ -7,20 +7,16 @@
 	 	<% @tournaments.each do |tournament| %>
 		<div class="col-md-4 portfolio-item">
 			<div class="well" id="tournament-index" style="border-radius: 15px;">		
-				<%= link_to image_tag("football_action.jpg", class: "img-responsive"), tournament_path(tournament) %>
+				<%= link_to image_tag(tournament.avatar, class: "img-responsive"), tournament_path(tournament) %>
 				<h3><%= tournament.title %></h3>
 				<hr>
 				<div class="row">
-					<div class="col-sm-3"><h5><strong>Category:</strong></h5></div>
-					<div class="col-sm-5"><h5><%= tournament.category %></h5></div>
-				</div>
-				<div class="row">
 					<div class="col-sm-3"><h5><strong>Location:</strong></h5></div>
-					<div class="col-sm-5"><h5><%= tournament.location %></h5></div>
+					<div class="col-sm-6"><h5><%= tournament.location %></h5></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-3"><h5><strong>Date:</strong></h5></div>
-					<div class="col-sm-9"><h5><%= tournament.start_date.strftime('%d %B %Y') %> - <%= tournament.end_date.strftime('%d %B %Y') %></h5></div>
+					<div class="col-sm-9"><h5><%= tournament.start_date.strftime('%d %B %Y') %></h5></div>
 				</div>
 			</div>
 		</div>
