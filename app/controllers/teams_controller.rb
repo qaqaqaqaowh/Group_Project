@@ -51,17 +51,11 @@ class TeamsController < ApplicationController
 		redirect_to teams_path
 	end
 
-	def showmembers
-		@team = Team.find(params[:team_id])
-		@members = @team.users
-		render "show_members"
-	end
-
 	def deletemember
 		@team = Team.find(params[:team_id])
 		@user = User.find(params[:user_id])
 		@team.users.delete(@user)
-		redirect_to show_members_path(team_id: @team.id)
+		redirect_to team_path(@team)
 	end
 end
 
