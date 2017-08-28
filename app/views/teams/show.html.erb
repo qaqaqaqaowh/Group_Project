@@ -20,23 +20,26 @@
 
 					<table class="full-width">
 						<% @team.users.each do |member| %>
-							<% if current_user.email == (User.find(@team.user_id)).email %>
 								<tr>
-									<td><%= link_to "#{member.name}", delete_member_path(team_id: @team.id, user_id: member.id), method: :post, data: { confirm: "Are you sure that you wanted to sack #{member.name}???" } %></td>
-								</tr>
-							<% else %>
-								<tr>
-									<td><%= member.name %></td>
-								</tr>
-							<% end %>
+									<td style="width:60%; font-size:22px"><%=member.name%></td>
+										<% if current_user.email == (User.find(@team.user_id)).email %>
+										<td><%=link_to "Message", nil, class: "lighter-link team-join", style: "font-size: 18px"%></td>
+										<td><%= link_to "Sack Member", delete_member_path(team_id: @team.id, user_id: member.id), method: :post, data: { confirm: "Are you sure that you wanted to sack #{member.name}???" },class: "lighter-link team-join", style: "font-size: 18px" %></td>
+										<%end%>
 						<% end %>
 					</table>
 				<%else%>
 					<h4 class="well-content">There are no members in this team yet.</h4>
 				<% end %>
 				<% if current_user.email == (User.find(@team.user_id)).email %>
-					<%= link_to "Edit Team", edit_team_path(@team.id), class: "lighter-link" %><br>
-					<%= link_to "Delete Team", team_path(@team), method: :delete, data: { confirm: "Are you sure?" }, class: "lighter-link"  %>
+				<hr>
+
+				<table class="full-width" style="margin-top:15px;">
+					<tr>
+						<td><%= link_to "Edit Team", edit_team_path(@team.id), class: "lighter-link" %></td>
+						<td style="text-align:right"><%= link_to "Delete Team", team_path(@team), method: :delete, data: { confirm: "Are you sure?" }, class: "lighter-link", style: "text-align:right" %></td>
+					</tr>
+				</table>
 				<% end %>
 			</div>
 
@@ -48,3 +51,4 @@
 		</div>
 	</div>
 </div>
+<div style="height:150px"></div>
