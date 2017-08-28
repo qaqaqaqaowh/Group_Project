@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   post "/tournaments/:id/approve" => "tournaments#approve", as: "approve_team_tournament"
   get 'payment/new'
   post 'payment/checkout'
+  post 'tournament/:tournament_id/delete/team/:team_id' => "tournaments#remove_team", as: "remove_team"
 end

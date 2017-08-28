@@ -81,6 +81,12 @@ class TournamentsController < ApplicationController
 		end
 		redirect_to tournament_path
 	end
+
+	def remove_team
+		@tournament_team = Tournament.find_by(team_id: params[:team_id], tournament_id: params[:tournament_id])
+		@tournament_team.destroy
+		redirect_to tournament_path(@tournament)
+	end
 end
 
 private
