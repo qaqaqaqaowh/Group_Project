@@ -1,2 +1,7 @@
 TOURNAMENT#EDIT
+<%if @tournament.user_id==current_user.id%>
 <%= render 'form' %>
+<%else%>
+<br>
+<%="Sorry! You are not authorized to edit this tournament!"%>
+<%end%>

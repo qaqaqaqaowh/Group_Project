@@ -6,16 +6,46 @@
   color: black;
   font-size: 16px;
   font-family: Hind Madurai;
-  border: 2px solid #008CBA;
-  padding: 16px 32px;
+  border: 3px solid #008CBA;
+  padding: 14px 30px;
   text-align: center;
   text-decoration: none;
   margin: 4px 2px;
-  border-radius: 5%;
+  border-radius: 10%;
   transition-duration: 0.5s;
   cursor: pointer;
 }
 .team-btn:hover{
   color: white;
   background-color: #008CBA;
+}
+
+.team-name{
+  color: white;
+  text-decoration: none;
+  font-size: 41px;
+  font-family: Khand;
+  font-weight: bold;
+}
+.team-name:hover{
+  color: lightblue;
+  text-decoration: none;
+}
+
+.team-leader{
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: lighter;
+}
+
+.team-join{
+  text-decoration: none;
+  font-size: 25px;
+  font-family: Hind Madurai;
+}
+
+.team-join:hover{
+  color: lightblue;
+  text-decoration: none;
 }

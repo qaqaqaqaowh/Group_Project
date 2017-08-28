@@ -56,3 +56,5 @@ gem 'carrierwave'
 gem 'omniauth-facebook'
 gem 'omniauth'
 gem 'figaro'
+#for payment
+gem 'braintree'

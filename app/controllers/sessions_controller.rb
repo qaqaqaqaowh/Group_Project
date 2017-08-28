@@ -15,7 +15,7 @@ class SessionsController < Clearance::SessionsController
 
 	def url_for_signed_in_users
 		url_after_create
-	end
+  end
 
 	def create_from_omniauth
     	auth_hash = request.env["omniauth.auth"]

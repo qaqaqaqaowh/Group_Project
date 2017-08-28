@@ -1,22 +1,40 @@
-<% if @teams.count == 0 %>
-	<h1>There are no teams at the moment</h1>
-	<%= link_to "Create a team", new_team_path %>
-	<%= link_to "My profile", user_path(current_user) %>
-<% else %>
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>By</th>
-		</tr>
-		<% @teams.each do |team| %>
-			<tr>
-				<td><%= link_to team.name, team_path(team) %></td>
-				<td><%= User.find(team.user_id).name %></td>
-				<% unless UserTeamApproval.find_by(user_id: current_user.id, team_id: team.id) || current_user.id == team.user_id %>
-				<td><%= link_to "Join", user_team_approvals_path(user_id: current_user.id, team_id: team.id), method: :create, data: {confirm:"Are you sure you want to send request to join the team???"} %> </td>
-				<% end %>
-			</tr>
-		<% end %>
-	</table>
-	<%= link_to "My profile", user_path(current_user) %>
-<% end %>
+<div class="container user-show">
+	<div class="row">
+		<h2>Teams</h2>
+		<hr class="line-seperate">
+
+			<div class="col-md-12">
+				<div class="well well-md full-width" style="margin-top:0">
+					<table class="full-width">
+						<% if @teams.count == 0 %>
+						<tr>
+							<td><h4 style="well-content">There are no teams at the moment</h4></td>
+						</tr>
+							<%= link_to "Create a team", new_team_path %>
+							<%= link_to "My profile", user_path(current_user) %>
+						<%else%>
+						<thead><tr>
+								<th style="font-family: Hind Madurai">NAME</th>
+								<th style="font-family: Hind Madurai">BY</th>
+								<th style="font-family: Hind Madurai">ACTIONS</th>
+						</tr></thead>
+						<tbody>
+							<% @teams.each do |team| %>
+								<tr>
+									<td style="width:55%"><%= link_to team.name.upcase, team_path(team), class: "team-name" %></td>
+									<td class="team-leader" style="width:30%"><em><%= User.find(team.user_id).name %></em></td>
+									<% unless UserTeamApproval.find_by(user_id: current_user.id, team_id: team.id) || current_user.id == team.user_id %></td>
+									<td><%= link_to "Join Team", user_team_approvals_path(user_id: current_user.id, team_id: team.id), method: :create, data: {confirm:"Are you sure you want to send request to join the team???"}, class: "team-join" %> </td>
+									<% end %>
+								</tr>
+								<%end%>
+						</tbody>
+					</table><br>
+					<%= link_to "My profile", user_path(current_user) %>
+					<% end %>
+				</div>
+			</div>
+
+	</div>
+</div>
+<div style="height:250px"></div>
