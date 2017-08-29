@@ -32,8 +32,8 @@ class User < ApplicationRecord
   end
 
   def check_phone_number
-    if phone.scan(/\d/).length != 0
-     errors.add(:phone,"Invalid phone number, less than 10 digits") if phone.scan(/\d/).length<10
+    if number.scan(/\d/).length != 0
+     errors.add(:phone,"Invalid phone number, less than 10 digits") if number.scan(/\d/).length<10
    end
   end
 end
