@@ -58,6 +58,5 @@ gem 'omniauth'
 gem 'figaro'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails'
-gem 'bootstrap-sass', '~> 3.3.6'
 #for payment
 gem 'braintree'
