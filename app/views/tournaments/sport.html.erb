@@ -5,7 +5,7 @@
 	<div class="row">
 	 <!-- loop each tournament at this column -->
 	 	<% @tournaments.each do |tournament| %>
-		<div class="col-md-4">
+		<div class="col-md-4 portfolio-item">
 			<div class="well" id="tournament-index" style="border-radius: 15px;">
 				<%= link_to image_tag(tournament.avatar, class: "img-responsive"), tournament_path(tournament) %>
 				<h4><%= tournament.title %></h4>

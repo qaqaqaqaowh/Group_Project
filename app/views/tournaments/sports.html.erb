@@ -1,1 +1,82 @@
-sports.html.erb
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="title">Select Your Sport</h1>
+            </div>
+        </div>
+        <hr>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-3 portfolio-item">
+            <div class="well" id="tournament-index" style="text-align: center;">
+                <%= link_to image_tag("football_category.jpg", class: "img-sports"), tournaments_sport_path(sport: "Football") %>
+            <h4>Football</h4>
+            </div>
+
+            </div>
+
+            <div class="col-md-3 portfolio-item">
+            <div class="well" id="tournament-index" style="text-align: center;>
+                <%= link_to image_tag("futsal_category.jpg", class: "img-sports"), 
+                	tournaments_sport_path(sport: "Futsal") %>
+            <h4>Futsal</h4>
+            </div>
+            </div>
+            
+            <div class="col-md-3 portfolio-item">
+            <div class="well" id="tournament-index" style="text-align: center;>
+                <%= link_to image_tag("basketball_category.JPG", class: "img-sports"), tournaments_sport_path(sport: "Basketball") %>
+            <h4>Basketball</h4>
+            </div>
+            </div>
+
+            <div class="col-md-3 portfolio-item">
+            <div class="well" id="tournament-index" style="text-align: center;>
+             	<%= link_to image_tag("badminton_category.jpg", class: "img-sports"),
+             	tournaments_sport_path(sport: "Badminton") %>
+           	<h4>Badminton</h4>
+            </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 portfolio-item">
+            <div class="well" id="tournament-index" style="text-align: center;>
+                <%= link_to image_tag("hockey_category.jpg", class: "img-sports"),
+                tournaments_sport_path(sport: "Field Hockey") %>
+            <h4>Hockey</h4>
+            </div>
+            </div>
+
+            <div class="col-md-3 portfolio-item">
+            <div class="well" id="tournament-index" style="text-align: center;>
+                <%= link_to image_tag("volleyball_category.jpg", class: "img-sports"),
+                tournaments_sport_path(sport: "Volleyball") %>
+            <h4>Volleyball</h4>
+            </div>
+            </div>
+            
+            <div class="col-md-3 portfolio-item">
+            <div class="well" id="tournament-index" style="text-align: center;>
+                <%= link_to image_tag("pingpong_category.jpg", class: "img-sports"),
+                tournaments_sport_path(sport: "Table Tennis") %>
+            <h4>Table Tennis</h4>
+            </div>
+            </div>
+
+            <div class="col-md-3 portfolio-item">
+            <div class="well" id="tournament-index" style="text-align: center;>
+             	<%= link_to image_tag("tennis_category.jpg", class: "img-sports"),
+             	tournaments_sport_path(sport: "Tennis") %>
+            <h4>Tennis</h4>
+            </div>
+            </div>
+        </div>
+        <br></br>
+ </div>
+        <!-- /.row -->
