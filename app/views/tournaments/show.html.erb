@@ -98,11 +98,6 @@
         <td><%= index + 1 %></td>
         <td><p><%=link_to team.name, team_path(team) %></p></td>
         <td>
-
-    </tr>
-    </tbody>
-    Team Name:<%=team.name%><br>
-    Approval:
         <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).approval%>
         <p><%="Approved"%>
         <%=link_to "Reject",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:false), method: :post, class: "btn btn-danger" %></p>
