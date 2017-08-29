@@ -13,9 +13,9 @@
  *= require_tree .
  *= require_self
  */
- 
+
 body {
-  background: url('background.jpg') no-repeat center center fixed;
+  background: url('https://s3-ap-southeast-1.amazonaws.com/sportsjoe/background.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
