@@ -94,8 +94,8 @@
 									<td class="title" style="text-align:left"><h3 style="margin-top:10px"><%=@tournament.title%></h3></td>
 									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.sport%></td>
 									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.location%></td>
-									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.start_date%></td>
-									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.end_date%></td>
+									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.start_date.strftime('%d %B %Y')%></td>
+									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.end_date.strftime('%d %B %Y')%></td>
 
 								</tr>
 								<% end %>
