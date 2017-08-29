@@ -1,19 +1,22 @@
-<h1>Payment#new</h1>
-<%#byebug%>
-<%= "Your total is RM #{@total_amount}"%>
-<div class="demo-frame">  
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+  <h1>Payment</h1>
+  <h4><%= "Your total is RM #{@total_amount}"%></h4>
+  <div class="demo-frame">
+    <div class="well well-md" style="margin-top:20px; margin-bottom:20px; width:100%">
 
       <%= form_for :checkout_form, url: payment_checkout_path, html: { id: "cardForm"} do |form| %>
 
 
-        <%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label"} %>
-        <div id="card-number" class="hosted-field"></div>
+        <%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label text-field", style: "padding:10px"} %>
+        <div id="card-number" class="hosted-field form-control"></div>
 
-        <%= form.label :expiration_date, "Expiration Date", html: {class: "hosted-fields--label"} %>      
-        <div id="expiration-date" class="hosted-field"></div>
+        <%= form.label :expiration_date, "Expiration Date", html: {class: "hosted-fields--label"} %>
+        <div id="expiration-date" class="hosted-field form-control"></div>
 
         <%= form.label :cvv, "CVV", html: {class: "hosted-fields--label"} %>
-        <div id="cvv" class="hosted-field"></div>
+        <div id="cvv" class="hosted-field form-control"></div>
 
         <%= form.hidden_field "payment_method_nonce" %>
 
@@ -25,6 +28,14 @@
         <%=form.hidden_field :team_id, value: @team.id%>
       <% end %>
     </div>
+  </div>
+
+  </div>
+  </div>
+</div>
+
+<div style="height:100px"></div>
+
     <!-- Load the Client component. -->
 <script src="https://js.braintreegateway.com/web/3.6.3/js/client.min.js"></script>
 
@@ -50,7 +61,8 @@
           client: clientInstance,
           styles: {
             'input': {
-              'font-size': '14px'
+              'font-size': '16px',
+              'color': 'black'
             },
             'input.invalid': {
               'color': 'red'
