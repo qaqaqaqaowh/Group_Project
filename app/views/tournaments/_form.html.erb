@@ -49,9 +49,13 @@
     <div class="form-group" id="new-tour-form">
     <div class="row">
     <div class="col-sm-2"><p><%= f.label :start_date %></p></div>
-    <div class="col-sm-4"><%= f.date_field :start_date, class: 'form-control' %></div>
+    <div class="col-sm-4" style='display: inline; position: relative;'>
+        <input type='date' id='datetimepicker1' class="form-control" name="starting_date" placeholder="Start Date">
+    </div>
     <div class="col-sm-2"><p><%= f.label :end_date %></p></div>
-    <div class="col-sm-4"><%= f.date_field :end_date, class: 'form-control' %></div>
+    <div class="col-sm-4" style='display: inline; position: relative;'>
+        <input type='date' id='datetimepicker2' class="form-control" name="end_date" placeholder="End Date">
+    </div>
     </div>
     </div>
 

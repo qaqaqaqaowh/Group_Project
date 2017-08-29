@@ -4,6 +4,7 @@
   <hr style="border:1px solid grey">
 	<div class="row">
 	 <!-- loop each tournament at this column -->
+	 <% if @tournaments.count != 0 %>
 	 	<% @tournaments.each do |tournament| %>
 		<div class="col-md-4 portfolio-item">
 			<div class="well" id="tournament-index" style="border-radius: 15px;">
@@ -21,6 +22,9 @@
 			</div>
 		</div>
 		<% end %>
+	 <% else %>
+	 	<h3>There is currently no tournament to show</h3>
+	 <% end %>
 	</div>
 	<br></br>
 </div>
