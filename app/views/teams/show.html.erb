@@ -1,10 +1,9 @@
 <table class="full-width">
 		<% unless @team.avatar.file.nil? %>
-		<tr><td style="text-align:center"><img style="height: 339px" src=<%= @team.avatar.url %> ></td></tr>
+		<tr><td style="text-align:center"><img style="height: 340px" src=<%= @team.avatar.url %> ></td></tr>
 		<% end %>
 		<tr><td style="text-align:center"><h1 class="title"><%= @team.name %></h1></td></tr>
 		<tr><td style="text-align:center"><h4><%= @team.description %></h4></td></tr>
-		<tr><td style="text-align:center">By: <%= (User.find(@team.user_id)).name %><br></td></tr>
 </table>
 
 <div class="container">
@@ -15,25 +14,38 @@
 			<table class="full-width"><tr>
 					<td><h2>Members :</h2></td>
 					<% if current_user.email == (User.find(@team.user_id)).email %>
-					<td class="right-text" style="vertical-align: bottom; padding-bottom:10px;"><%= link_to "Join requests (#{UserTeamApproval.where(team_id: @team.id).count})", user_team_approvals_path(@team.id), class: "lighter-link"%></td><%end%>
+					<td class="right-text" style="vertical-align: bottom; padding-bottom:10px;"><%= link_to "Join requests (#{UserTeamApproval.where(team_id: @team.id).count})", user_team_approvals_path(@team.id), class: "lighter-link"%></td>
+					<%else%>
+						<% if @team.users.where(id: current_user.id).blank?%>
+								<td class="right-text" style="vertical-align:bottom; padding-bottom:10px; font-size:15px"><%= link_to "Join Team", user_team_approvals_path(user_id: current_user.id, team_id: @team.id), method: :create, data: {confirm:"Are you sure you want to send request to join the team???"}, class: "lighter-link" %> </td>
+						<%else%>
+						<% end %>
+					<%end%>
 				</tr></table>
 
 			<div class="well well-md profile-well" style="width:100%">
-				<% if @team.users.count != 0 %>
+
 
 					<table class="full-width">
-						<% @team.users.each do |member| %>
+							<tr>
+								<td style="width:55%; font-size:22px"><em><%= link_to (User.find(@team.user_id)).name, user_path((User.find(@team.user_id)).id), style: "color:white; text-decoration:none; cursor: pointer" %></em></td>
+								<td style="width:21%; font-size:18px"><strong>Captain</strong></td>
+								<td colspan="2" style="font-size:16px">Contact No. <%=User.find(@team.user_id).number%></td>
+							</tr>
+							<td colspan="3"><div class="line" style="width:97%; margin:10px; margin-left:0px; border-color:gray"></div></td>
+
+								<% @team.users.each do |member| %>
 								<tr>
-									<td style="width:60%; font-size:22px"><%=link_to member.name, user_path(member.id), style: "color:white; text-decoration:none"%></td>
+								<td style="width:55%; font-size:22px"><%=link_to member.name, user_path(member.id), style: "color:white; text-decoration:none; cursor: pointer"%></td>
+								<td style="width:21%; font-size:18px">Member</td>
 										<% if current_user.email == (User.find(@team.user_id)).email %>
-										<td><%=link_to "Message", nil, class: "lighter-link team-join", style: "font-size: 18px"%></td>
-										<td><%= link_to "Sack Member", delete_member_path(team_id: @team.id, user_id: member.id), method: :post, data: { confirm: "Are you sure that you wanted to sack #{member.name}???" },class: "lighter-link team-join", style: "font-size: 18px" %></td>
+											<td><%=link_to "Message", nil, class: "lighter-link team-join", style: "font-size: 18px"%></td>
+											<td><%= link_to "Sack Member", delete_member_path(team_id: @team.id, user_id: member.id), method: :post, data: { confirm: "Are you sure that you wanted to sack #{member.name}???" },class: "lighter-link team-join", style: "font-size: 18px" %></td>
 										<%end%>
-						<% end %>
+								</tr>
+								<% end %>
 					</table>
-				<%else%>
-					<h4 class="well-content">There are no members in this team yet.</h4>
-				<% end %>
+
 				<% if current_user.email == (User.find(@team.user_id)).email %>
 				<hr>
 
@@ -46,15 +58,49 @@
 				<% end %>
 			</div>
 
+<div style="height:25px"></div>
+
+<!--- Tournaments Area -------------->
+
+			<table class="full-width"><tr>
+					<td><h2>Particating Tournaments :</h2></td>
+			</tr></table>
+
+			<div class="well well-md profile-well" style="width:100%">
+					<table class="full-width">
+							<%@tournament_finder = TournamentTeamApprov.where(team_id: @team.id)%>
+							<%if @tournament_finder.blank?%>
+							<h4 class="well-content">This team ain't participating in any tournaments at the moment</h4>
+							<%else%>
+								<% @tournament_finder.each do |tourn| %>
+								<%@tournament = Tournament.find(tourn.tournament_id)%>
+								<tr>
+
+									<td><%= image_tag(@tournament.avatar, class: "img-responsive", style: "width:320px; height:320px; border-radius:70%;") %></td>
+
+									<td style="font-size:20px"><%=@tournament.title%></td>
+									<td><%=@tournament.sport%></td>
+									<td><%=@tournament.location%></td>
+									<td><%=@tournament.start_date%></td>
+									<td><%=@tournament.end_date%></td>
+
+								</tr>
+								<% end %>
+							<%end%>
+					</table>
+
+			</div>
+<!--  -->
+	<div style="height:20px"></div>
 			<table class="full-width" style="margin-top:1%"><tr>
 
-					<td style="text-align:right; width:50%; padding-right:2px"><%= button_to "Teams", teams_path, method: :get, class: "team-btn", style: "font-size:21px"%></td>
+					<td style="text-align:right; width:50%; padding-right:2px"><%= button_to "Teams", teams_path, method: :get, class: "team-btn", style: "font-size:21px; font-family: Khand"%></td>
 
-					<td style="text-align:left; width:50%; padding-left:2px"><%= button_to "My Profile", user_path(current_user), method: :get, class: "team-btn", style: "font-size:21px"%></td>
+					<td style="text-align:left; width:50%; padding-left:2px"><%= button_to "My Profile", user_path(current_user), method: :get, class: "team-btn", style: "font-size:21px; font-family: Khand"%></td>
 
 			</tr></table>
 
 		</div>
 	</div>
 </div>
-<div style="height:150px"></div>
+<div style="height:80px"></div>

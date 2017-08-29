@@ -81,7 +81,7 @@
 
 		<h4 style="margin-top:0">Participating in :</h4>
 		<div class="col-md-7" style="padding:0">
-			<div class="well well-md profile-well full-width" style="padding-bottom:0px">
+			<div class="well well-md profile-well full-width">
 			<%@tournament_finder = TournamentTeamApprov.where("team_id IN (?)", (Team.where(user_id: current_user.id)).ids)%>
 				<% if @tournament_finder.blank? %>
 				<h4 class="well-content">You are not enlisted in any tournaments at the moment</h4>
