@@ -20,12 +20,14 @@ class UsersController < Clearance::UsersController
     password = user_params.delete(:password)
     first_name = user_params.delete(:first_name)
     last_name = user_params.delete(:last_name)
+    phone = user_params.delete(:phone)
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.email = email
       user.password = password
       user.first_name = first_name
       user.last_name = last_name
+      user.phone = phone
     end
   end
 
@@ -71,5 +73,5 @@ end
 
 private
 def edit_params_user
-  params.require(:user).permit(:first_name, :last_name)
+  params.require(:user).permit(:first_name, :last_name, :phone)
 end
