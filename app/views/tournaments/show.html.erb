@@ -45,7 +45,7 @@
                             <div class="row">
                             <div class="col-sm-4"><p><strong>Location:</strong></p></div>
                             <div class="col-sm-8" style="width:100%"><iframe frameborder="0" style="border:0; width:100%; height:200px"
-                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBa4PD6ehDjmq0C3MHsC0cXapptobF4KLw&q=<%=@tournament.location%>"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-IU8REFooINEWkiQz7S9XWssmdGLixQI=<%=@tournament.location%>"
                             allowfullscreen>
                           </iframe></div>
                             </div>
@@ -113,7 +113,7 @@
         <%else%>
         <p><%="Not paid"%>
         <%= link_to "Remove team", remove_team_path(tournament_id: @tournament.id, team_id: team.id), method: :post, data: { confirm: "Are you sure you want to remove #{team.name} from the tournament??" }, class: "btn btn-danger" %></p>
-        
+
     <%end%>
         </td>
     </tr>
@@ -127,11 +127,11 @@
     <div class="row">
     <div class="col-sm-3">
     <p><strong>Join tournament:</strong></p>
-    </div>   
+    </div>
     <% if @team %>
     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)%>
     <div class="col-sm-3">
-       <p><strong>Registration Status:</strong></p> 
+       <p><strong>Registration Status:</strong></p>
     </div>
     <div class="col-sm-3">
             <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).approval%>
