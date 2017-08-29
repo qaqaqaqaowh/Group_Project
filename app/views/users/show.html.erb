@@ -53,7 +53,7 @@
 
 			<table class="profile-title"><tr><td>
 				<h4>Teams :</h4></td>
-				<td class="right-text"><%= link_to "List of teams", teams_path, class: "lighter-link" %></td></tr></table>
+				<td class="right-text"><%= link_to "List of teams", teams_path, class: "btn btn-primary" %></td></tr></table>
 			<div class="well well-md profile-well">
 				<% if @user.teams.count != 0 %>
 					<% @user.teams.each do |team| %>
@@ -66,7 +66,7 @@
 
 			<table class="profile-title"><tr><td>
 				<h4>Team Leader Of :</h4></td>
-				<td class="right-text"><%= link_to "Create a team", new_team_path, class: "lighter-link" %></td></tr></table>
+				<td class="right-text"><%= link_to "Create a team", new_team_path, class: "btn btn-primary" %></td></tr></table>
 			<div class="well well-md profile-well">
 				<% @teams = Team.where(user_id: @user.id) %>
 				<% if @teams.count != 0 %>
