@@ -25,7 +25,7 @@ class TournamentsController < ApplicationController
 
 	def show
 		@tournament = Tournament.find(params[:id])
-		@team=Team.find_by_user_id(current_user.id)
+		@team = Team.find_by_user_id(current_user.id)
 	end
 
 	def edit
@@ -56,7 +56,7 @@ class TournamentsController < ApplicationController
 
 	def sports
   end
-  
+
 	def join
 		@team=Team.find(params[:id])
 		@tournament=Tournament.find(params[:tournament_id])
