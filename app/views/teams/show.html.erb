@@ -23,7 +23,7 @@
 					<%end%>
 				</tr></table>
 
-			<div class="well well-md profile-well" style="width:100%">
+			<div class="well well-md profile-well" style="width:100%; margin-top:5px">
 
 
 					<table class="full-width">
@@ -32,7 +32,7 @@
 								<td style="width:21%; font-size:18px"><strong>Captain</strong></td>
 								<td colspan="2" style="font-size:16px">Contact No. <%=User.find(@team.user_id).number%></td>
 							</tr>
-							<td colspan="3"><div class="line" style="width:97%; margin:10px; margin-left:0px; border-color:gray"></div></td>
+							<td colspan="4"><div class="line" style="width:97%; margin:10px; margin-left:0px; border-color:gray"></div></td>
 
 								<% @team.users.each do |member| %>
 								<tr>
@@ -66,23 +66,36 @@
 					<td><h2>Particating Tournaments :</h2></td>
 			</tr></table>
 
-			<div class="well well-md profile-well" style="width:100%">
+			<div class="well well-md profile-well" style="width:100%; padding: 35px; padding-top:23px; margin-top:5px">
 					<table class="full-width">
 							<%@tournament_finder = TournamentTeamApprov.where(team_id: @team.id)%>
 							<%if @tournament_finder.blank?%>
 							<h4 class="well-content">This team ain't participating in any tournaments at the moment</h4>
 							<%else%>
-								<% @tournament_finder.each do |tourn| %>
-								<%@tournament = Tournament.find(tourn.tournament_id)%>
+
 								<tr>
+									<td></td>
+									<td style="font-size:15px"><em>Title</em></td>
+									<td style="font-size:15px"><em>Sport</em></td>
+									<td style="font-size:15px"><em>Location</em></td>
+									<td style="font-size:15px"><em>Start</em></td>
+									<td style="font-size:15px"><em>End</em></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td colspan="6"><div class="line" style="width:100%; margin:0;margin-top:10px; border-color:gray"></div></td>
+								</tr>
 
-									<td><%= image_tag(@tournament.avatar, class: "img-responsive", style: "width:320px; height:320px; border-radius:70%;") %></td>
+									<% @tournament_finder.each do |tourn| %>
+									<%@tournament = Tournament.find(tourn.tournament_id)%>
+								<tr>
+									<td style="width: 20%"><%= link_to image_tag(@tournament.avatar, class: "img-responsive", style: "width:150px; height:150px; border-radius:70%; cursor:pointer"), tournament_path(@tournament) %></td>
 
-									<td style="font-size:20px"><%=@tournament.title%></td>
-									<td><%=@tournament.sport%></td>
-									<td><%=@tournament.location%></td>
-									<td><%=@tournament.start_date%></td>
-									<td><%=@tournament.end_date%></td>
+									<td class="title" style="text-align:left"><h3 style="margin-top:10px"><%=@tournament.title%></h3></td>
+									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.sport%></td>
+									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.location%></td>
+									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.start_date.strftime('%d %B %Y')%></td>
+									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.end_date.strftime('%d %B %Y')%></td>
 
 								</tr>
 								<% end %>

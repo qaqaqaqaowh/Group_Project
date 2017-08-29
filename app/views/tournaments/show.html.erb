@@ -130,23 +130,23 @@
     </div>
     <% if @team %>
     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)%>
-    <div class="col-sm-3">
-       <p><strong>Registration Status:</strong></p>
-    </div>
-    <div class="col-sm-3">
-            <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).approval%>
-            <p><%="Approved"%></p>
-            <%else%>
-            <p><%="Pending!"%></p>
-            <%end%><br>
-    </div>
-     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).payment_status%>
-            <% "Paid"%>
-            <%else%>
-            <% "Not paid!"%>
-            <%end%><br>
-
-
+      <div class="col-sm-3">
+         <p><strong>Registration Status:</strong></p>
+      </div>
+      <div class="col-sm-3">
+              <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).approval%>
+              <p><%="Approved"%></p>
+              <%else%>
+              <p><%="Pending!"%></p>
+              <%end%><br>
+      </div>
+      <div class="col-sm-3">
+              <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).payment_status%>
+              <% "Paid"%>
+              <%else%>
+              <% "Not paid!"%>
+              <%end%><br>
+      </div>
 
     <%else%>
         <% if TournamentTeamApprov.where(tournament_id: @tournament.id).count <= @tournament.num_teams %>
@@ -154,6 +154,8 @@
             <% teams.each do |team| %>
                 <% if team.users.count + 1 >= @tournament.num_players %>
                     <%= link_to team.name,join_tournament_path(id: team.id, tournament_id: @tournament.id), :class => 'btn btn-primary' %>
+                <%else%>
+                  <br><h4 class="well-content">You have <%=team.users.count%> players in your team. You will only be able to join the tournament with <%=@tournament.num_players%>. Please come back when you do.</h4>
                 <% end %>
             <% end %>
         <% end %>
