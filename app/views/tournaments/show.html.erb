@@ -126,7 +126,7 @@
     <div class="card well">
     <div class="row">
     <div class="col-sm-3">
-    <p><strong>Status:</strong></p>
+    <p><strong>Join tournament:</strong></p>
     </div>   
     <% if @team %>
     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)%>
@@ -149,9 +149,13 @@
 
 
     <%else%>
-        <% teams = Team.where(user_id: current_user.id) %>
-        <% teams.each do |team| %>
-            <%= link_to team.name,join_tournament_path(id: team.id, tournament_id: @tournament.id), :class => 'btn btn-primary' %>
+        <% if TournamentTeamApprov.where(tournament_id: @tournament.id).count <= @tournament.num_teams %>
+            <% teams = Team.where(user_id: current_user.id) %>
+            <% teams.each do |team| %>
+                <% if team.users.count >= @tournament.num_players %>
+                    <%= link_to team.name,join_tournament_path(id: team.id, tournament_id: @tournament.id), :class => 'btn btn-primary' %>
+                <% end %>
+            <% end %>
         <% end %>
     <%end%>
 
