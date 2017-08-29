@@ -3,15 +3,15 @@
     <div class="col-lg-6 col-lg-offset-3">
       <div class="well" id="sign-in-up">
           <div class="form-group">
-          <%= image_tag("logo.png", class: "form-logo") %>
+          <%= image_tag("https://s3-ap-southeast-1.amazonaws.com/sportsjoe/logo.png", class: "form-logo") %>
           </div>
           <div id="clearance" class="sign-in">
-   
+
           <%= render partial: '/sessions/form' %>
 
 
           </div>
-       
+
       </div>
           <div class="other-links">
           <% if Clearance.configuration.allow_sign_up? %>
