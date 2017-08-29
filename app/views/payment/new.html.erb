@@ -10,13 +10,13 @@
 
 
         <%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label text-field", style: "padding:10px"} %>
-        <div id="card-number" class="hosted-field text-field"></div>
+        <div id="card-number" class="hosted-field form-control"></div>
 
         <%= form.label :expiration_date, "Expiration Date", html: {class: "hosted-fields--label"} %>
-        <div id="expiration-date" class="hosted-field text-field"></div>
+        <div id="expiration-date" class="hosted-field form-control"></div>
 
         <%= form.label :cvv, "CVV", html: {class: "hosted-fields--label"} %>
-        <div id="cvv" class="hosted-field text-field"></div>
+        <div id="cvv" class="hosted-field form-control"></div>
 
         <%= form.hidden_field "payment_method_nonce" %>
 
@@ -62,7 +62,7 @@
           styles: {
             'input': {
               'font-size': '16px',
-              'color': 'white'
+              'color': 'black'
             },
             'input.invalid': {
               'color': 'red'
