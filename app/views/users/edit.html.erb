@@ -1,13 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h2>Edit Profile : </h2>
+      <table class="full-width">
+        <tr>
+          <td><h2>Edit Profile :</h2></td>
+          <td class="right-text" style="vertical-align:bottom; padding-bottom:10px"><%= link_to "Back", user_path(current_user.id), class: "btn btn-warning edit-button" %></td>
+        </tr>
+      </table>
 
-      <div class="well well-md" style="margin-top:20px; margin-bottom:20px; width:100%">
+
+      <div class="well well-md" style="margin-top:0px; margin-bottom:20px; width:100%">
           <%= render "edit" %>
       </div>
 
-      <%= link_to "Back", user_path(current_user.id), class: "lighter-link" %>
     </div>
 
   </div>
