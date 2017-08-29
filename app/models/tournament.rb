@@ -11,4 +11,5 @@ class Tournament < ApplicationRecord
 	validates :num_players, presence: true
 	has_many :tournament_team_approvs
   	has_many :teams, through: :tournament_team_approvs
+  	default_scope -> { order(start_date: :asc) }
 end
