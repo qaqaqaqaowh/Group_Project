@@ -127,8 +127,8 @@
     <div class="well">
     <p><strong>Status:</strong></p>
     <% if @team %>
-     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)%>
-       Approval Status:
+     <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id) %>
+       Approval Status: 
             <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).approval%>
             <%="Approved"%>
             <%else%>
@@ -145,7 +145,10 @@
 
 
     <%else%>
-    <%=link_to "Join now",join_tournament_path, :class => 'btn btn-primary' %>
+        <% teams = Team.where(user_id: current_user.id) %>
+        <% teams.each do |team| %>
+            <%= link_to team.name,join_tournament_path(id: team.id, tournament_id: @tournament.id), :class => 'btn btn-primary' %>
+        <% end %>
     <%end%>
 
     <%else%>

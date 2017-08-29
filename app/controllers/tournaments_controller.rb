@@ -58,8 +58,8 @@ class TournamentsController < ApplicationController
   end
 
 	def join
-		@team=Team.find_by_user_id(current_user.id)
-		@tournament=Tournament.find(params[:id])
+		@team=Team.find(params[:id])
+		@tournament=Tournament.find(params[:tournament_id])
 		@tournament_team=TournamentTeamApprov.new(team_id:@team.id,tournament_id:@tournament.id,payment_status:false, approval:false )
 		@tournament_team.save
  		@tournament_team=TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)
