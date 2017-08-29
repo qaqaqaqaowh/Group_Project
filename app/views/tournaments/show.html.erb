@@ -5,12 +5,12 @@
     <div class="col-lg-11 col-lg-offset-1">
     <div class="card well">
     <div class="row">
-    
+
         <div class="col-md-4">
         <%= image_tag(@tournament.avatar, class: "img-responsive", style: "width:320px; height:320px; border-radius:10%;") %>
         </div>
                     <div class="col-md-8">
-                    
+
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="color: white;">Overview</a></li>
                             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="color: white;">Description</a></li>
@@ -59,7 +59,7 @@
                                 <li class="tournament-team"><%= team.name %></li>
                                 <% end %>
                             <%end%>
-                            </ol>                       
+                            </ol>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="settings">
                             <div class="description"><p><%= @tournament.rules %></p></div>
@@ -70,23 +70,17 @@
 
                         </div>
                     </div>
-                  
-                
+
+
                 </div>
             </div>
     <%if @tournament.user_id==current_user.id%>
     <div class="well">
-    
-    <p><strong>Admin's Section:</strong></p>
-<<<<<<< HEAD
-    <%= link_to 'Edit This Tournament', edit_tournament_path(@tournament)%>|||
-        <%= link_to 'Delete This Tournament', tournament_path(@tournament), method: :delete, data: {confirm: "Sure?"}  %><%end%>
 
-=======
+    <p><strong>Admin's Section:</strong></p>
     <%= link_to 'Edit Tournament', edit_tournament_path(@tournament), :class =>'btn btn-primary'%>
         <%= link_to 'Delete Tournament', tournament_path(@tournament), :class => 'btn btn-danger', method: :delete, data: {confirm: "Sure?"}  %>
     <table class="table table-condensed">
->>>>>>> master
     <%@tournament.teams.each do |team|%>
     <thead>
     <tr>
@@ -98,11 +92,11 @@
     </thead>
     <tbody>
     <tr>
-            
+
     </tr>
     </tbody>
     Team Name:<%=team.name%><br>
-    Approval: 
+    Approval:
         <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).approval%>
         <%="Approved,  "%>
         <%=link_to "DISAPPROVE!",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:false), method: :post %>
@@ -113,7 +107,7 @@
         <%=link_to "APPROVE!",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:true), method: :post %>
         <%end%><br>
 
-    Payment Status: 
+    Payment Status:
  <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).payment_status%>
         <%="Paid"%>
         <%else%>
@@ -131,14 +125,14 @@
     <p><strong>Status:</strong></p>
     <% if @team %>
      <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)%>
-       Approval Status: 
+       Approval Status:
             <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).approval%>
             <%="Approved"%>
             <%else%>
             <%="Pending!"%>
             <%end%><br>
 
-        Payment Status: 
+        Payment Status:
      <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).payment_status%>
             <%="Paid"%>
             <%else%>
