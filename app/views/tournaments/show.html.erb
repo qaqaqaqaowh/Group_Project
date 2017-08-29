@@ -1,26 +1,22 @@
 
 <div class="container">
-  <%if @tournament.avatar?%>
-  <img src=<%=@tournament.avatar.url%> style="float:right; height: 100px; width: 100px; border-radius:50%")>
-  <%end%>
     <h1 class="title"><%= @tournament.title %></h1>
     <br>
+    <div class="col-lg-11 col-lg-offset-1">
     <div class="card well">
     <div class="row">
-
+    
         <div class="col-md-4">
         <%= image_tag(@tournament.avatar, class: "img-responsive", style: "width:320px; height:320px; border-radius:10%;") %>
         </div>
-        		<div class="col-md-6">
-
+                    <div class="col-md-8">
+                    
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="color: white;">Overview</a></li>
                             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="color: white;">Description</a></li>
                             <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="color: white;">Participants</a></li>
                             <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="color: white;">Rules</a></li>
-                             <%if @tournament.user_id==current_user.id%>
-                             <li role="presentation"><a href="#admin" aria-controls="settings" role="tab" data-toggle="tab" style="color: white;">Admin</a></li>
-                             <%end%>
+                            <li role="presentation"><a href="#bracket" aria-controls="bracket" role="tab" data-toggle="tab" style="color: white;">Bracket</a></li>
                         </ul>
 
                             <!-- Tab panes -->
@@ -56,35 +52,51 @@
                             </div>
                             <div role="tabpanel" class="tab-pane" id="messages">
                             <ol>
+                                <% if @tournament.teams.count == 0 %>
+                            <div class="col-sm-4"><p><strong>No Participants yet</strong></p></div>
+                                <% else %>
                             <%@tournament.teams.each do |team|%>
                                 <li class="tournament-team"><%= team.name %></li>
+                                <% end %>
                             <%end%>
-                            </ol>
+                            </ol>                       
                             </div>
                             <div role="tabpanel" class="tab-pane" id="settings">
                             <div class="description"><p><%= @tournament.rules %></p></div>
                             </div>
-
-                            <div role="tabpanel" class="tab-pane" id="admin">
-                            <div class="description"><p><%= link_to 'Edit This Tournament', edit_tournament_path(@tournament)%></p><br>
-        <p><%= link_to 'Delete This Tournament', tournament_path(@tournament), method: :delete, data: {confirm: "Sure?"}  %></p></div>
+                            <div role="tabpanel" class="tab-pane" id="bracket">
+                            <div class="description"><p><strong>The bracket will be generated 1 day before the tournament begins.</strong></p></div>
                             </div>
+
                         </div>
-
+                    </div>
+                  
+                
                 </div>
-                </div>
-        	</div>
-            <br></br>
-
+            </div>
     <%if @tournament.user_id==current_user.id%>
+    <div class="well">
+    
     <p><strong>Admin's Section:</strong></p>
-    <%= link_to 'Edit This Tournament', edit_tournament_path(@tournament)%>|||
-        <%= link_to 'Delete This Tournament', tournament_path(@tournament), method: :delete, data: {confirm: "Sure?"}  %>
-
+    <%= link_to 'Edit Tournament', edit_tournament_path(@tournament), :class =>'btn btn-primary'%>
+        <%= link_to 'Delete Tournament', tournament_path(@tournament), :class => 'btn btn-danger', method: :delete, data: {confirm: "Sure?"}  %>
+    <table class="table table-condensed">
     <%@tournament.teams.each do |team|%>
+    <thead>
+    <tr>
+        <th>Team Name</th>
+        <th>Status</th>
+        <th>Registration fee</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+            
+    </tr>
+    </tbody>
     Team Name:<%=team.name%><br>
-    Team ID: <%=team.id%><br>
-    Approval:
+    Approval: 
         <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).approval%>
         <%="Approved,  "%>
         <%=link_to "DISAPPROVE!",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:false), method: :post %>
@@ -95,7 +107,7 @@
         <%=link_to "APPROVE!",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:true), method: :post %>
         <%end%><br>
 
-    Payment Status:
+    Payment Status: 
  <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).payment_status%>
         <%="Paid"%>
         <%else%>
@@ -103,23 +115,24 @@
         <%= link_to "Pay", payment_new_path(team_id: team.id,tournament_id:@tournament.id,total:@tournament.fee) %><br>
         <% if current_user == @tournament.user_id %>
             <%= link_to "Remove team", remove_team_path(tournament_id: @tournament.id, team_id: team.id), method: :post, data: { confirm: "Are you sure you wan't to remove #{team.name} from the tournament??" } %>
-        <%end%><br>
-<br><br>
+        <%end%>
     <%end%>
-<%end%>
-
-
-    <p><strong>Team's Section:</strong></p>
-<% if @team %>
+    <% end %>
+    </table>
+    </div>
+    <%end%>
+    <div class="well">
+    <p><strong>Status:</strong></p>
+    <% if @team %>
      <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id)%>
-       Approval Status:
+       Approval Status: 
             <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).approval%>
             <%="Approved"%>
             <%else%>
             <%="Pending!"%>
             <%end%><br>
 
-        Payment Status:
+        Payment Status: 
      <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(@team.id,@tournament.id).payment_status%>
             <%="Paid"%>
             <%else%>
@@ -129,12 +142,14 @@
 
 
     <%else%>
-    <%=link_to "JOIN THIS TOURNAMENT!",join_tournament_path%>
+    <%=link_to "Join now",join_tournament_path, :class => 'btn btn-primary' %>
     <%end%>
 
-<%else%>
-<%="Create A TEAM FIRST!"%>
+    <%else%>
+    <%= link_to "Create or Join a team first!"%>
 
-<%end%>
-
+    <%end%>
+    </div>
+    </div>
 </div>
+<br>
