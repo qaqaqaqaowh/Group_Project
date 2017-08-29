@@ -24,7 +24,7 @@
 					<table class="full-width">
 						<% @team.users.each do |member| %>
 								<tr>
-									<td style="width:60%; font-size:22px"><%=member.name%></td>
+									<td style="width:60%; font-size:22px"><%=link_to member.name, user_path(member.id), style: "color:white; text-decoration:none"%></td>
 										<% if current_user.email == (User.find(@team.user_id)).email %>
 										<td><%=link_to "Message", nil, class: "lighter-link team-join", style: "font-size: 18px"%></td>
 										<td><%= link_to "Sack Member", delete_member_path(team_id: @team.id, user_id: member.id), method: :post, data: { confirm: "Are you sure that you wanted to sack #{member.name}???" },class: "lighter-link team-join", style: "font-size: 18px" %></td>
@@ -51,7 +51,7 @@
 					<td style="text-align:right; width:50%; padding-right:2px"><%= button_to "Teams", teams_path, method: :get, class: "team-btn", style: "font-size:21px"%></td>
 
 					<td style="text-align:left; width:50%; padding-left:2px"><%= button_to "My Profile", user_path(current_user), method: :get, class: "team-btn", style: "font-size:21px"%></td>
-					
+
 			</tr></table>
 
 		</div>

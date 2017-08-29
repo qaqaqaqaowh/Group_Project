@@ -79,7 +79,7 @@
 			</div>
 		</div>
 
-		<h4 style="margin-top:0">My Tournaments :</h4>
+		<h4 style="margin-top:0">Participating in :</h4>
 		<div class="col-md-7" style="padding:0">
 			<div class="well well-md profile-well full-width" style="padding-bottom:0px">
 			<%@tournament_finder = TournamentTeamApprov.where("team_id IN (?)", (Team.where(user_id: current_user.id)).ids)%>
