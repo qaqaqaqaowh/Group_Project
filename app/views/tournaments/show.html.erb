@@ -79,7 +79,7 @@
     <%if @tournament.user_id==current_user.id%>
     <p><strong>Admin's Section:</strong></p>
     <%= link_to 'Edit This Tournament', edit_tournament_path(@tournament)%>|||
-        <%= link_to 'Delete This Tournament', tournament_path(@tournament), method: :delete, data: {confirm: "Sure?"}  %>
+        <%= link_to 'Delete This Tournament', tournament_path(@tournament), method: :delete, data: {confirm: "Sure?"}  %><%end%>
 
     <%@tournament.teams.each do |team|%>
     Team Name:<%=team.name%><br>
