@@ -68,13 +68,13 @@
 				<h4>Team Leader Of :</h4></td>
 				<td class="right-text"><%= link_to "Create a team", new_team_path, class: "btn btn-primary" %></td></tr></table>
 			<div class="well well-md profile-well">
-				<% @teams = Team.where(user_id: @user.id) %>
+				<% @teams = Team.where(user_id: current_user.id) %>
 				<% if @teams.count != 0 %>
 					<% @teams.each do |team| %>
 						<em><%= link_to team.name, team_path(team), class: "team-name", style: "font-size:32px" %></em><br>
 					<% end %>
 				<% else %>
-					<h5 class="well-content">You are not the Team Leader of any Teams at the moment.</h5>
+					<h4 class="well-content">You are not the Team Leader of any Teams at the moment.</h4>
 				<% end %>
 			</div>
 		</div>
@@ -82,8 +82,9 @@
 		<h4 style="margin-top:0">Participating in :</h4>
 		<div class="col-md-7" style="padding:0">
 			<div class="well well-md profile-well full-width">
-			<%@tournament_finder = TournamentTeamApprov.where("team_id IN (?)", (Team.where(user_id: current_user.id)).ids)%>
-				<% if @tournament_finder.blank? %>
+			<%@tournament_finder = TournamentTeamApprov.where("team_id IN (?)", @user.teams.ids)%>
+
+				<% if !@tournament_finder %>
 				<h4 class="well-content">You are not enlisted in any tournaments at the moment</h4>
 				<%else%>
 					<div class="row">
