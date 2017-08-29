@@ -29,14 +29,14 @@ $(document).ready(function(){
                 useCurrent: false,
                 minDate: moment()
             });
-            $('#datetimepicker1').datetimepicker().on('dp.change', function (e) {
+            $('#datetimepicker1').datetimepicker().on('focus', function (e) {
                 var incrementDay = moment(new Date(e.date));
                 incrementDay.add(1, 'days');
                 $('#datetimepicker2').data('DateTimePicker').minDate(incrementDay);
                 $(this).data("DateTimePicker").hide();
             });
 
-            $('#datetimepicker2').datetimepicker().on('dp.change', function (e) {
+            $('#datetimepicker2').datetimepicker().on('focus', function (e) {
                 var decrementDay = moment(new Date(e.date));
                 decrementDay.subtract(1, 'days');
                 $('#datetimepicker1').data('DateTimePicker').maxDate(decrementDay);
