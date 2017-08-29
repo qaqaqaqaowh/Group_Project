@@ -81,7 +81,7 @@
 
 		<h4 style="margin-top:0">My Tournaments :</h4>
 		<div class="col-md-7" style="padding:0">
-			<div class="well well-md profile-well full-width">
+			<div class="well well-md profile-well full-width" style="padding-bottom:0px">
 			<%@tournament_finder = TournamentTeamApprov.where("team_id IN (?)", (Team.where(user_id: current_user.id)).ids)%>
 				<% if @tournament_finder.blank? %>
 				<h4 class="well-content">You are not enlisted in any tournaments at the moment</h4>
@@ -89,8 +89,8 @@
 					<div class="row">
 						<% @tournament_finder.each do |tourn| %>
 						<%@tournament = Tournament.find(tourn.tournament_id)%>
-							<div class="col-md-4" style="padding:0px;padding-left:10px; padding-right:10px;">
-								<div class="well full-width" style="padding:16px; margin-right:0px; cursor:pointer">
+							<div class="col-md-4" style="padding:0px;padding-left:13px; padding-right:11px;">
+								<div class="well full-width" style="padding:16px; margin-bottom:19px; cursor:pointer;height: 300px; overflow:scroll; ">
 
 									<%= link_to image_tag(@tournament.avatar, class: "img-user-show center-block"), tournament_path(@tournament)%>
 									<h4 style="text-align:center"><%= @tournament.title %></h4>
@@ -116,4 +116,4 @@
 		</div>
 	</div>
 </div>
-<div style="height:50px"></div>
+<div style="height:90px"></div>
