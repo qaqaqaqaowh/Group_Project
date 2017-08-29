@@ -9,7 +9,7 @@
 
 					<tr>
 						<td colspan="2" style="text-align:center; padding-bottom:15px; padding-top:10px"><% if !@user.avatar? %>
-							<%=image_tag("no_avatar.jpg", style: "height: 100px; width: 100px; border-radius:50%")%>
+							<%=image_tag("https://s3-ap-southeast-1.amazonaws.com/sportsjoe/no_avatar.jpg", style: "height: 100px; width: 100px; border-radius:50%")%>
 							<%else%>
 							<img src=<%= @user.avatar.url%> style="height: 100px; width: 100px; border-radius:50%">
 							<% end %></td>
