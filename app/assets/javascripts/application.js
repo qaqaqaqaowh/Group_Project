@@ -13,8 +13,33 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require moment
+//= require bootstrap-datetimepicker
 
 $(".nav li").on("click", function(){
    $(".nav").find(".active").removeClass("active");
    $(this).parent().addClass("active");
 });
+
+$(document).on('turbolinks:load',function(){
+		// $("#datetimepicker1").datetimepicker({format: 'YYYY-M-D'});
+		// $("#datetimepicker2").datetimepicker({format: 'YYYY-M-D'});
+		$('#datetimepicker1,#datetimepicker2').datetimepicker({
+				format: 'YYYY-M-D',
+                useCurrent: false,
+                minDate: moment()
+            });
+            $('#datetimepicker1').datetimepicker().on('focus', function (e) {
+                var incrementDay = moment(new Date(e.date));
+                incrementDay.add(1, 'days');
+                $('#datetimepicker2').data('DateTimePicker').minDate(incrementDay);
+                $(this).data("DateTimePicker").hide();
+            });
+
+            $('#datetimepicker2').datetimepicker().on('focus', function (e) {
+                var decrementDay = moment(new Date(e.date));
+                decrementDay.subtract(1, 'days');
+                $('#datetimepicker1').data('DateTimePicker').maxDate(decrementDay);
+                 $(this).data("DateTimePicker").hide();
+            });
+})

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   validates :email, uniqueness: true, on: [:create]
   validates :email, :password, :first_name, :last_name, presence: true, on: [:create]
+  validate :check_phone_number
   has_many :tournaments
   has_many :user_team_approvals, dependent: :destroy
   has_many :authentications, dependent: :destroy
@@ -28,5 +29,13 @@ class User < ApplicationRecord
   def fb_token
     x = self.authentications.find_by(provider: 'facebook')
     return x.token unless x.nil?
+  end
+
+  def check_phone_number
+    if !number.nil?
+      if number.scan(/\d/).length != 0
+       errors.add(:phone,"Invalid phone number, less than 10 digits") if number.scan(/\d/).length<10
+      end
+    end
   end
 end

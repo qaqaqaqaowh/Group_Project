@@ -56,5 +56,7 @@ gem 'carrierwave'
 gem 'omniauth-facebook'
 gem 'omniauth'
 gem 'figaro'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails'
 #for payment
 gem 'braintree'

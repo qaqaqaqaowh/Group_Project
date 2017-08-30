@@ -2,6 +2,7 @@
 	<h3>Profile Picture :</h3>
 	<%= u.file_field :file %>
 	<h3>First Name :</h3><%= u.text_field :first_name, class: "text-field" %><br>
-	<h3>Last Name :</h3> <%= u.text_field :last_name, class: "text-field"  %><br><br>
+	<h3>Last Name :</h3> <%= u.text_field :last_name, class: "text-field"  %><br>
+	<h3>Phone Number :</h3> <%= u.text_field :number, class: "text-field" %><br><br>
 	<%= u.submit "Submit", class: "btn btn-warning edit-button" %>
 <% end %>
