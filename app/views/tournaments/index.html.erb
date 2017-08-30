@@ -15,7 +15,11 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-3"><h5><strong>Date:</strong></h5></div>
+<<<<<<< HEAD
 					<div class="col-sm-9"><h6><%= tournament.start_date.strftime( '%d-%m-%Y') %></h6></div>
+=======
+					<div class="col-sm-9"><h6><%= Date.strptime(tournament.start_date, '%d %B %Y') %></h6></div>
+>>>>>>> master
 				</div>
 			</div>
 		</div>

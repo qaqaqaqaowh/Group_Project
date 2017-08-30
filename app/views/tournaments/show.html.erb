@@ -67,6 +67,12 @@
                             </div>
                             <div role="tabpanel" class="tab-pane" id="settings">
                             <div class="description"><p><%= @tournament.rules %></p></div>
+                            <div class="row">
+                            <div class="col-sm-4"><p><strong>Number of Teams:</strong></p></div>
+                            <div class="col-sm-5"><p><%= @tournament.num_teams %></p></div>
+                            <div class="col-sm-4"><p><strong>Players Per Team:</strong></p></div>
+                            <div class="col-sm-5"><p><%= @tournament.num_players %></p></div>
+                            </div>   
                             </div>
                             <div role="tabpanel" class="tab-pane" id="bracket">
 
@@ -172,7 +178,8 @@
         <td>
         <% if TournamentTeamApprov.find_by_team_id_and_tournament_id(team.id,@tournament.id).approval%>
         <p><%="Approved"%>
-        <%=link_to "Reject",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:false), method: :post, class: "btn btn-danger" %></p>
+        <%=link_to "Reject",approve_team_tournament_path(team_id: team.id,tournament_id:@tournament.id,approval:false), method: :post, class: "btn btn-danger" %>
+        <%= link_to "Remove team", remove_team_path(tournament_id: @tournament.id, team_id: team.id), method: :post, data: { confirm: "Are you sure you want to remove #{team.name} from the tournament??" }, class: "btn btn-danger" %></p>
         <!-- link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post -->
         <%else%>
         <p><%="Pending"%>
