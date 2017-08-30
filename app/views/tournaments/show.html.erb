@@ -44,7 +44,7 @@
                             </div>
                             <div class="row">
                             <div class="col-sm-4"><p><strong>Location:</strong></p></div>
-                            <div class="col-sm-8" style="width:100%"><iframe width="300" height="300" frameborder="0" style="border:0"
+                            <div class="col-sm-8" style="width:100%"><iframe width="100%" height="200px" frameborder="0" style="border:0"
                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBa4PD6ehDjmq0C3MHsC0cXapptobF4KLw&q=<%=@tournament.location%>"
                            allowfullscreen>
                           </iframe>
@@ -69,7 +69,7 @@
                             <div class="description"><p><%= @tournament.rules %></p></div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="bracket">
-    
+
 
     <main id="tournament">
     <ul class="round round-1">
@@ -84,19 +84,19 @@
             <li class="game game-top winner"><%= all.shift.name %><span></span></li>
             <li class="game game-spacer">&nbsp;</li>
             <li class="game game-bottom "><%= all.shift.name %><span></span></li>
-        <% end %> 
+        <% end %>
     <%else %>
         <% until all.count == 0 %>
             <li class="spacer">&nbsp;</li>
             <li class="game game-top winner"><%= all.shift.name %><span></span></li>
 
-        <% end %> 
+        <% end %>
 
     <%end %>
-        
+
     <% if @tournament.teams.count.even? %>
         <% (4 - @tournament.teams.count/2).times do %>
-            <li class="spacer">&nbsp;</li> 
+            <li class="spacer">&nbsp;</li>
             <li class="game game-top"> Team xx<span></span></li>
             <li class="game game-spacer">&nbsp;</li>
             <li class="game game-bottom ">Team xx<span></span></li>
@@ -105,7 +105,7 @@
  <li class="game game-spacer">&nbsp;</li>
             <li class="game game-bottom ">Team xx<span></span></li>
         <% (4 - @tournament.teams.count/2 -1).times do %>
-         <li class="spacer">&nbsp;</li> 
+         <li class="spacer">&nbsp;</li>
             <li class="game game-top"> Team xx<span></span></li>
             <li class="game game-spacer">&nbsp;</li>
             <li class="game game-bottom ">Team xx<span></span></li>
@@ -113,33 +113,33 @@
     <% end %>
      <li class="spacer">&nbsp;</li>
     </ul>
-   
+
 
     <ul class="round round-2">
         <li class="spacer">&nbsp;</li>
-        
+
         <li class="game game-top winner">Quadrant 1 winner<span></span></li>
         <li class="game game-spacer">&nbsp;</li>
         <li class="game game-bottom ">Quandrant 2 winner<span></span></li>
 
         <li class="spacer">&nbsp;</li>
-        
+
         <li class="game game-top winner">Quandrant 3 winner<span></span></li>
         <li class="game game-spacer">&nbsp;</li>
         <li class="game game-bottom ">Quadrant 4 winner<span></span></li>
 
         <li class="spacer">&nbsp;</li>
-        
+
     </ul>
     <ul class="round round-3">
         <li class="spacer">&nbsp;</li>
-        
+
         <li class="game game-top winner">Semi Final 1 winner<span></span></li>
         <li class="game game-spacer">&nbsp;</li>
         <li class="game game-bottom ">Semi Final 2 winner<span></span></li>
 
         <li class="spacer">&nbsp;</li>
-              
+
     </main>
                             </div>
 
@@ -227,7 +227,7 @@
                 <% if team.users.count + 1 >= @tournament.num_players %>
                     <%= link_to team.name,join_tournament_path(id: team.id, tournament_id: @tournament.id), :class => 'btn btn-primary' %>
                 <%else%>
-                  <br><h4 class="well-content">You have <%=team.users.count%> players in your team. You will only be able to join the tournament with <%=@tournament.num_players%>. Please come back when you do.</h4>
+                  <br><h5 class="well-content">You have <%=team.users.count%> players in your team. You will only be able to join the tournament with <%=@tournament.num_players%>. Please come back when you do.</h5>
                 <% end %>
             <% end %>
         <% end %>

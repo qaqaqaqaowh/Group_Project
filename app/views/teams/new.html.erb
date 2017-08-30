@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h2>Create Team : </h2>
+      <table class="full-width">
+        <tr>
+          <td><h2>Create Team : </h2></td>
+          <td class="right-text" style="vertical-align:bottom; padding-bottom:5px"><%= link_to "Back", user_path(current_user), class: "btn btn-warning edit-button" %></td>
+        </tr>
+      </table>
 
-      <div class="well well-md" style="margin-top:20px; margin-bottom:20px; width:100%">
+      <div class="well well-md" style="margin-top:10px; margin-bottom:20px; width:100%">
           <%= render "teams/new" %>
       </div>
-
-      <%= link_to "Back", user_path(current_user), class: "lighter-link" %>
     </div>
 
   </div>
