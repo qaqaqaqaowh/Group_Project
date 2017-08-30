@@ -21,5 +21,9 @@
 		</div>
 		<% end %>
 	</div>
+<% data = Tournament.unscoped.group_by_day(:created_at).count %>
+      <div style="color: white;">  <%= line_chart data%></div>
+
+  </div>
 	<br></br>
 </div>
