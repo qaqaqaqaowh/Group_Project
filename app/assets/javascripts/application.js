@@ -10,11 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require Chart.bundle
+//= require chartkick
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
 //= require moment
 //= require bootstrap-datetimepicker
+
 
 $(".nav li").on("click", function(){
    $(".nav").find(".active").removeClass("active");

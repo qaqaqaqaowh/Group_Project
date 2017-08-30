@@ -89,15 +89,17 @@
 									<% @tournament_finder.each do |tourn| %>
 									<%@tournament = Tournament.find(tourn.tournament_id)%>
 								<tr>
-									<td style="width: 20%"><%= link_to image_tag(@tournament.avatar, class: "img-responsive", style: "width:150px; height:150px; border-radius:70%; cursor:pointer"), tournament_path(@tournament) %></td>
+									<td style="width: 20%"><%= link_to image_tag(@tournament.avatar, class: "img-responsive", style: "width:130px; height:130px; border-radius:70%; cursor:pointer"), tournament_path(@tournament) %></td>
 
-									<td class="title" style="text-align:left"><h3 style="margin-top:10px"><%=@tournament.title%></h3></td>
-									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.sport%></td>
-									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.location%></td>
-									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.start_date.strftime('%d %B %Y')%></td>
-									<td style="font-size:22px; font-weight:lighter; font-family:Khand"><%=@tournament.end_date.strftime('%d %B %Y')%></td>
-
+									<td class="title" style="text-align:left; width: 17%"><h3 style="margin-top:10px"><%=@tournament.title%></h3></td>
+									<td style="font-size:17px"><%=@tournament.sport%></td>
+									<td style="font-size:17px"><%=@tournament.location%></td>
+									<td style="font-size:17px"><%=@tournament.start_date.strftime('%d %B %Y')%></td>
+									<td style="font-size:17px"><%=@tournament.end_date.strftime('%d %B %Y')%></td>
 								</tr>
+								<tr>
+									<td><div style="height:20px"></div></td>
+								</tr>	
 								<% end %>
 							<%end%>
 					</table>
