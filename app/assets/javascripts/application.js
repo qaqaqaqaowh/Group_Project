@@ -21,7 +21,7 @@ $(".nav li").on("click", function(){
    $(this).parent().addClass("active");
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 		// $("#datetimepicker1").datetimepicker({format: 'YYYY-M-D'});
 		// $("#datetimepicker2").datetimepicker({format: 'YYYY-M-D'});
 		$('#datetimepicker1,#datetimepicker2').datetimepicker({
