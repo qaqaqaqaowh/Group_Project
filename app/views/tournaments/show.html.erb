@@ -68,7 +68,78 @@
                             <div class="description"><p><%= @tournament.rules %></p></div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="bracket">
-                            <div class="description"><p><strong>The bracket will be generated 1 day before the tournament begins.</strong></p></div>
+    
+
+    <main id="tournament">
+    <ul class="round round-1">
+        <% all = [] %>
+        <% @tournament.teams.each do |t| %>
+        <% all << t %>
+        <% end %>
+
+    <% if all.count.even? %>
+        <% until all.count == 0 %>
+            <li class="spacer">&nbsp;</li>
+            <li class="game game-top winner"><%= all.shift.name %><span></span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom "><%= all.shift.name %><span></span></li>
+        <% end %> 
+    <%else %>
+        <% until all.count == 0 %>
+            <li class="spacer">&nbsp;</li>
+            <li class="game game-top winner"><%= all.shift.name %><span></span></li>
+
+        <% end %> 
+
+    <%end %>
+        
+    <% if @tournament.teams.count.even? %>
+        <% (4 - @tournament.teams.count/2).times do %>
+            <li class="spacer">&nbsp;</li> 
+            <li class="game game-top"> Team xx<span></span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Team xx<span></span></li>
+        <% end %>
+    <% else %>
+ <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Team xx<span></span></li>
+        <% (4 - @tournament.teams.count/2 -1).times do %>
+         <li class="spacer">&nbsp;</li> 
+            <li class="game game-top"> Team xx<span></span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Team xx<span></span></li>
+        <% end %>
+    <% end %>
+     <li class="spacer">&nbsp;</li>
+    </ul>
+   
+
+    <ul class="round round-2">
+        <li class="spacer">&nbsp;</li>
+        
+        <li class="game game-top winner">Quadrant 1 winner<span></span></li>
+        <li class="game game-spacer">&nbsp;</li>
+        <li class="game game-bottom ">Quandrant 2 winner<span></span></li>
+
+        <li class="spacer">&nbsp;</li>
+        
+        <li class="game game-top winner">Quandrant 3 winner<span></span></li>
+        <li class="game game-spacer">&nbsp;</li>
+        <li class="game game-bottom ">Quadrant 4 winner<span></span></li>
+
+        <li class="spacer">&nbsp;</li>
+        
+    </ul>
+    <ul class="round round-3">
+        <li class="spacer">&nbsp;</li>
+        
+        <li class="game game-top winner">Semi Final 1 winner<span></span></li>
+        <li class="game game-spacer">&nbsp;</li>
+        <li class="game game-bottom ">Semi Final 2 winner<span></span></li>
+
+        <li class="spacer">&nbsp;</li>
+              
+    </main>
                             </div>
 
                         </div>
